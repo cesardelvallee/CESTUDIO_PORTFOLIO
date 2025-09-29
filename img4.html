@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <style>html, body { margin:0!important; padding:0!important; box-sizing:border-box!important; }</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagen 4</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dragme.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="top-bar">
+      <div class="top-bar-left" id="home-link">CESAR DEL VALLE</div>
+      <div class="top-bar-right">EL RASTRILLO DE NUEVO FUTURO</div>
+    </div>
+  <div style="position:relative;width:100vw;height:100vh;overflow:hidden;padding:0;margin:0;">
+    <img src="img/RASTRILLO_NUEVO.FUTURO.png" alt="EL RASTRILLO DE NUEVO FUTURO" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:1;display:block;padding:0;margin:0;border:none;outline:none;" />
+  </div>
+  <div style="min-height:120vh;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5vw 0;">
+    <h1 style="color:white;font-size:3vw;font-family:'Inter',Arial,sans-serif;margin-bottom:2vw;">EL RASTRILLO DE NUEVO FUTURO</h1>
+    <p style="color:#eee;font-size:1.5vw;max-width:700px;text-align:center;margin-bottom:3vw;">Imagen a pantalla completa para la campaña benéfica de Nuevo Futuro. Puedes añadir aquí una descripción, créditos o información adicional sobre el proyecto.</p>
+  </div>
+  <div id="egg-cursor"></div>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('home-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

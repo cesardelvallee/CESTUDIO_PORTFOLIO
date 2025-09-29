@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CESAR DEL VALLE</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dragme.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+ <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+</head>
+<body>
+<div id="vanta-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;"></div>
+<div class="top-bar">
+  <div class="top-bar-left">CESAR DEL VALLE</div>
+  <div class="top-bar-right">CONTACT ME</div>
+</div>
+
+<div class="content-drag-area">
+  <div class="center-hero-text">
+    <div class="model-3d-bg">
+  <model-viewer src="assets/67459489d7ae3ba1d33f5e92.glb" auto-rotate auto-rotate-speed="6" disable-zoom disable-pan style="width:140%;height:140%;background:transparent;" alt="3D Model"></model-viewer>
+    </div>
+    <div class="hero-title">PORTFOLIO</div>
+    <div class="hero-subtitle">GRAPHIC DESIGNER</div>
+  </div>
+  <div class="stacked-images">
+    <div>
+      <img class="img-drag img-1" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80">
+      <span class="img-drag-bubble">DRAG ME</span>
+    </div>
+    <div>
+      <img class="img-drag img-2" src="https://assets.codepen.io/16327/flair-3.png">
+      <span class="img-drag-bubble">DRAG ME</span>
+    </div>
+    <div>
+      <img class="img-drag img-3" src="img/MOCKUP_ATUN_02.jpg">
+      <span class="img-drag-bubble">DRAG ME</span>
+    </div>
+    <div>
+      <img class="img-drag img-4" src="img/RASTRILLO_INSTASTORIE2.jpg">
+      <span class="img-drag-bubble">EL RASTRILLO DE NUEVO FUTURO</span>
+    </div>
+    <div>
+      <img class="img-drag img-5" src="img/WhatsApp Image 2025-09-24 at 15.47.46.jpeg">
+      <span class="img-drag-bubble">SPOT LOEWE</span>
+    </div>
+  </div>
+  <!-- Botón abajo y por encima de las imágenes -->
+  <div class="hero-btn-bottom-wrapper">
+    <button class="hero-btn"><span class="hero-btn-text">ABOUT ME</span></button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+<script>
+  // Inicializar Vanta.js HALO con parámetros personalizados
+  window.addEventListener('DOMContentLoaded', function() {
+    if (window.VANTA && window.VANTA.HALO) {
+      VANTA.HALO({
+        el: '#vanta-bg',
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+  baseColor: 0x181c24,
+        backgroundColor: 0x080808,
+  amplitudeFactor: 12,
+  xOffset: 0,
+  yOffset: 0,
+  size: 1.2,
+        shininess: 80
+      });
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script>
+// Animar primero el texto 'GRAPHIC DESIGNER', luego el texto del botón 'ABOUT ME' con más retardo
+window.addEventListener('DOMContentLoaded', function() {
+  var subtitle = document.querySelector('.hero-subtitle');
+  var btnText = document.querySelector('.hero-btn-text');
+  if(subtitle) {
+    subtitle.classList.add('animate');
+  }
+  setTimeout(function() {
+    if(btnText) {
+      btnText.classList.add('animate');
+    }
+  }, 1400); // Espera 1400ms para que la animación sea más tardía
+});
+</script>
+
+  <span id="dragme-bubble" class="img-drag-bubble">DRAG ME</span>
+  <div id="egg-cursor"></div>
+</body>
+</html>
