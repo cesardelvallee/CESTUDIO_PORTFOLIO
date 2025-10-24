@@ -377,6 +377,29 @@ html, body {
   height: auto;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  /* Use smooth default rendering instead of crisp-edges to avoid pixelation */
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  will-change: transform;
+}
+
+/* Ensure draggable images use smooth filtering and avoid forced pixelated rendering */
+.stacked-images .img-drag,
+.img-drag {
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Keep natural proportions and avoid CSS upscaling where possible */
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .content-drag-area {
   width: 100vw;
   min-height: 100vh;
