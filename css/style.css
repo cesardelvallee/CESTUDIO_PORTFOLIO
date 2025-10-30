@@ -515,3 +515,63 @@ img {
   opacity: 0;
   pointer-events: none;
 }
+
+.hero-title,
+.hero-subtitle,
+.hero-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- PARALLAX VIDEO STYLES --- */
+#video-section {
+  position: relative;
+}
+
+.video-figure {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.video-figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  border-radius: 20px;
+}
+
+/* --- MOBILE TOUCH INTERACTIONS --- */
+@media (max-width: 768px) {
+  .img-drag {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .img-drag:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  
+  .img-drag-bubble {
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .img-drag:active + .img-drag-bubble {
+    opacity: 0.7;
+  }
+  
+  /* Mejorar el feedback visual en móvil */
+  .stacked-images {
+    touch-action: manipulation;
+  }
+}

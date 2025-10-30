@@ -5,25 +5,273 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imagen 5</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dragme.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <style>
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes rotate-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes scrollIndicator {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(30px); }
+      100% { transform: translateX(-50%) translateY(60px); opacity: 0; }
+    }
+    
+    .interactive-element:hover .play-icon {
+      animation: playPulse 0.6s ease-in-out;
+    }
+    
+    @keyframes playPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    .stat-number {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-number::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #2a1f15, transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    
+    .stat-item:hover .stat-number::after {
+      transform: translateX(100%);
+    }
+    
+    /* Top bar color override for this page */
+    .top-bar-left,
+    .top-bar-right {
+      color: #6b5d47 !important;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    
+    /* Tablet Design (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr !important;
+        gap: 6vw !important;
+        text-align: center;
+      }
+      
+      .project-info {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .project-details-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 3rem !important;
+      }
+    }
+    
+    /* Mobile Design (max-width: 768px) */
+    @media (max-width: 768px) {
+      .main-section {
+        min-height: 100vh !important;
+        padding: 15vh 4vw 6vh 4vw !important;
+      }
+      
+      .main-grid {
+        gap: 4rem !important;
+      }
+      
+      .project-number-category {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+      }
+      
+      .project-number-category .divider {
+        width: 60px !important;
+        transform: rotate(90deg);
+      }
+      
+      .project-details-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center;
+      }
+      
+      .technical-info {
+        margin: 2rem 0 !important;
+      }
+      
+      .right-column {
+        padding: 1rem !important;
+      }
+      
+      .year-display {
+        margin-bottom: 3rem !important;
+      }
+      
+      .quote-section {
+        margin-bottom: 2rem !important;
+      }
+      
+      .dots-pattern {
+        margin-bottom: 2rem !important;
+      }
+    }
+    
+    /* Small Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+      .main-section {
+        padding: 12vh 3vw 4vh 3vw !important;
+      }
+      
+      .project-info {
+        max-width: 100% !important;
+      }
+      
+      .main-title {
+        font-size: clamp(2.5rem, 12vw, 4rem) !important;
+        line-height: 0.9 !important;
+      }
+      
+      .project-description {
+        font-size: clamp(1rem, 4vw, 1.2rem) !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      .year-display {
+        font-size: clamp(3rem, 15vw, 4rem) !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="top-bar">
       <div class="top-bar-left" id="home-link">CESAR DEL VALLE</div>
-      <div class="top-bar-right">SPOT LOEWE</div>
+      <div class="top-bar-right">LOEWE 001</div>
     </div>
-  <div style="position:relative;width:100vw;height:100vh;overflow:hidden;padding:0;margin:0;">
-    <video src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" autoplay loop style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:1;display:block;padding:0;margin:0;border:none;outline:none;" playsinline></video>
+  <div class="main-section" style="min-height:80vh;background:#d4c4a8;display:flex;align-items:center;justify-content:center;padding:10vh 5vw 4vh 5vw;">
+    
+    <div class="main-grid" style="max-width:1400px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;">
+      
+      <!-- Left Column - Project Info -->
+      <div class="project-info">
+        <!-- Project Number & Category -->
+        <div class="project-number-category" style="display:flex;align-items:center;margin-bottom:2rem;">
+          <span style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.8rem,1vw,0.9rem);font-weight:500;letter-spacing:0.2em;text-transform:uppercase;">Project 05</span>
+          <div class="divider" style="width:40px;height:1px;background:#2a1f15;margin:0 1.5rem;"></div>
+          <span style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(0.8rem,1vw,0.9rem);font-weight:300;letter-spacing:0.1em;">3D Animation</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="main-title" style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(3.5rem,7vw,6rem);font-weight:700;line-height:0.85;letter-spacing:-0.03em;margin:0 0 1.5rem 0;">LOEWE<br><span style="font-weight:300;font-style:italic;">001 Perfume</span></h1>
+
+        <!-- Description -->
+        <p class="project-description" style="color:#3d2e1f;font-family:'Inter',sans-serif;font-size:clamp(1.1rem,1.8vw,1.4rem);line-height:1.5;font-weight:300;margin:0 0 3rem 0;max-width:500px;">Spot audiovisual para el perfume Loewe 001, desarrollado completamente en 3D utilizando Cinema 4D. Una experiencia visual que captura la esencia moderna y sofisticada de la fragancia.</p>
+
+        <!-- Project Details -->
+        <div class="project-details-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;">
+          <div>
+            <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;margin:0 0 0.5rem 0;">Role</h4>
+            <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(0.9rem,1.2vw,1rem);line-height:1.4;margin:0;font-weight:300;">3D Artist<br>Cinema 4D Specialist<br>Creative Direction</p>
+          </div>
+          <div>
+            <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;margin:0 0 0.5rem 0;">Product</h4>
+            <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(0.9rem,1.2vw,1rem);line-height:1.4;margin:0;font-weight:300;">Loewe 001 Perfume<br>Luxury Fragrance</p>
+          </div>
+        </div>
+
+        <!-- Technical Info -->
+        <div class="technical-info" style="padding:1.5rem 0;border-top:1px solid rgba(42,31,21,0.2);border-bottom:1px solid rgba(42,31,21,0.2);">
+          <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;margin:0 0 0.5rem 0;">Software</h4>
+          <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(0.9rem,1.2vw,1rem);line-height:1.4;margin:0;font-weight:300;">Cinema 4D R25<br>After Effects · Premiere Pro</p>
+        </div>
+      </div>
+
+      <!-- Right Column - Minimal Concept -->
+      <div class="right-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;position:relative;">
+        
+        <!-- Simple Year Display -->
+        <div class="year-display" style="text-align:center;margin-bottom:6rem;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
+          <div style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(4rem,8vw,6rem);font-weight:100;line-height:1;margin-bottom:1rem;">2025</div>
+          <div style="width:60px;height:1px;background:#4a3828;margin:0 auto;"></div>
+        </div>
+
+        <!-- Minimalist Quote -->
+        <div class="quote-section" style="text-align:center;max-width:300px;margin-bottom:4rem;opacity:0;animation:fadeInUp 1s ease-out 0.8s forwards;">
+          <p style="color:#3d2e1f;font-family:'Inter',sans-serif;font-size:clamp(1.1rem,1.8vw,1.3rem);line-height:1.5;font-style:italic;margin:0;">"El diseño es donde la ciencia y el arte se equilibran"</p>
+        </div>
+
+        <!-- Simple Dots Pattern -->
+        <div class="dots-pattern" style="display:flex;gap:1rem;margin-bottom:4rem;opacity:0;animation:fadeInUp 1s ease-out 1.1s forwards;">
+          <div style="width:6px;height:6px;background:#2a1f15;border-radius:50%;"></div>
+          <div style="width:6px;height:6px;background:#4a3828;border-radius:50%;"></div>
+          <div style="width:6px;height:6px;background:#2a1f15;border-radius:50%;"></div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div style="text-align:center;opacity:0;animation:fadeInUp 1s ease-out 1.4s forwards;">
+          <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(0.8rem,1vw,0.9rem);letter-spacing:0.1em;text-transform:uppercase;margin:0;">Scroll para descubrir</p>
+        </div>
+        
+      </div>
+      
+    </div>
+    
   </div>
-  <div style="min-height:120vh;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5vw 0;">
-    <model-viewer src="assets/LOEWE_PARFUM.gltf" auto-rotate camera-controls disable-zoom disable-pan style="width:40vw;max-width:400px;height:50vh;margin-bottom:2vw;background:transparent;" alt="LOEWE PARFUM 3D"></model-viewer>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <h1 style="color:white;font-size:3vw;font-family:'Inter',Arial,sans-serif;margin-bottom:2vw;">SPOT LOEWE</h1>
-    <p style="color:#eee;font-size:1.5vw;max-width:700px;text-align:center;margin-bottom:3vw;">Este spot fue realizado para la campaña de Loewe, combinando creatividad visual y sonido para transmitir la esencia de la marca. El video superior se reproduce automáticamente con sonido para una experiencia inmersiva.</p>
-    <p style="color:#bbb;font-size:1.1vw;max-width:600px;text-align:center;">Dirección, edición y postproducción: César del Valle.<br>Cliente: Loewe.<br>Año: 2025.</p>
-  </div>
+  
+  <!-- Sección de parallax del video -->
+  <section id="video-section" style="min-height:300vh;background:#d4c4a8;">
+    <div class="video__content">
+      <figure class="video-figure">
+        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" autoplay loop muted playsinline></video>
+      </figure>
+    </div>
+  </section>
+
   <div id="egg-cursor"></div>
   <script src="script.js"></script>
   <script>
@@ -31,6 +279,43 @@
       e.preventDefault();
       window.location.href = 'index.html';
     });
+
+    // Parallax effect como en el ejemplo
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      
+      const isAnimationOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+      
+      if(isAnimationOk) {
+        // Pin the video section
+        ScrollTrigger.create({
+          trigger: "#video-section",
+          start: "top top",
+          end: "bottom bottom",
+          pin: ".video-figure",
+          pinSpacing: false
+        });
+        
+        // Scale animation like parallax
+        gsap.fromTo("#kaleo-video", 
+          {
+            scale: 0.55
+          },
+          {
+            scale: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#video-section",
+              start: "top top",
+              end: "+=400%",
+              scrub: 3,
+              pin: true,
+              pinSpacing: false
+            }
+          }
+        );
+      }
+    }
   </script>
 </body>
 </html>

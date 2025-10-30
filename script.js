@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-  // Doble click en cada imagen para redirigir a una página distinta
+  // Doble click en cada imagen para redirigir a una página distinta (Desktop)
+  // Touch/tap en cada imagen para redirigir (Mobile)
   const imgLinks = [
     'img1.html', 
     'img2.html', 
@@ -38,10 +39,43 @@ document.addEventListener('DOMContentLoaded', () => {
     'img4.html', 
     'img5.html'  
   ];
+  
+  // Función para detectar si es móvil
+  function isMobile() {
+    return window.innerWidth <= 768 || 'ontouchstart' in window;
+  }
+  
   document.querySelectorAll('.img-drag').forEach((img, i) => {
-    img.addEventListener('dblclick', () => {
-      window.location.href = imgLinks[i];
-    });
+    if (isMobile()) {
+      // En móvil: un solo toque para navegar
+      let touchStartTime = 0;
+      
+      img.addEventListener('touchstart', (e) => {
+        touchStartTime = Date.now();
+      });
+      
+      img.addEventListener('touchend', (e) => {
+        const touchEndTime = Date.now();
+        const touchDuration = touchEndTime - touchStartTime;
+        
+        // Si el toque es rápido (menos de 300ms), navegar
+        if (touchDuration < 300) {
+          e.preventDefault();
+          window.location.href = imgLinks[i];
+        }
+      });
+      
+      // Prevenir el comportamiento de drag en móvil para estas imágenes
+      img.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+      });
+      
+    } else {
+      // En desktop: doble click como antes
+      img.addEventListener('dblclick', () => {
+        window.location.href = imgLinks[i];
+      });
+    }
   });
   // Animación GSAP al pasar el cursor por el botón CONTACT ME y hacerlo clickable
   const btn = document.querySelector('.hero-btn');
