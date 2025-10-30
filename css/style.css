@@ -523,7 +523,99 @@ img {
   pointer-events: none;
 }
 
-/* --- PARALLAX VIDEO STYLES --- */
+/* ====== PANTALLA DE CARGA ====== */
+#loading-emoji {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.15));
+  animation: emoji-float 3.5s ease-in-out infinite, emoji-fade-in 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes emoji-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes emoji-float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.15));
+  }
+  50% { 
+    transform: translateY(-15px) scale(1.08);
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.25));
+  }
+}
+
+@keyframes float-dot {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+#loading-screen {
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loading-title {
+  animation: fade-in-up 1s ease forwards 0.5s;
+}
+
+#loading-subtitle {
+  animation: fade-in-up 1s ease forwards 0.8s;
+}
+
+#loading-text {
+  animation: fade-in-up 1s ease forwards 1.2s, loading-pulse 2s ease-in-out infinite 2s;
+}
+
+/* Responsive para pantalla de carga */
+@media (max-width: 768px) {
+  #loading-screen {
+    padding: 2rem;
+  }
+  
+  #loading-emoji {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  
+  #loading-screen div:nth-child(1) {
+    margin-bottom: 3rem;
+  }
+  
+  #loading-screen div:nth-child(2) {
+    width: 280px;
+    height: 2px;
+  }
+}
+
+/* ====== ESTILOS ORIGINALES ====== */
 #video-section {
   position: relative;
 }
@@ -550,6 +642,11 @@ img {
 
 /* --- MOBILE TOUCH INTERACTIONS --- */
 @media (max-width: 768px) {
+  /* Ocultar cursor personalizado en móvil */
+  #egg-cursor {
+    display: none !important;
+  }
+  
   .img-drag {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;

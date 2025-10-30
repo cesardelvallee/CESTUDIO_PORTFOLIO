@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
+  <!-- Preload recursos críticos para carga más fluida -->
+  <link rel="preload" href="assets/loading-emoji.json" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script">
+  
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CESAR DEL VALLE</title>
@@ -10,9 +15,46 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/dragme.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
+<!-- PANTALLA DE CARGA -->
+<div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+  
+  <!-- Emoji de carga animado (reemplaza el texto) -->
+  <div style="margin-bottom: 4rem;">
+    <lottie-player
+      id="loading-emoji"
+      src="assets/loading-emoji.json"
+      background="transparent"
+      speed="1"
+      style="width: 160px; height: 160px;"
+      loop
+      autoplay>
+    </lottie-player>
+  </div>
+
+  <!-- Barra de progreso elegante -->
+  <div style="width: 320px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 1px; overflow: hidden; margin-bottom: 2.5rem;">
+    <div id="loading-progress" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffffff 0%, #cccccc 100%); border-radius: 1px; transition: width 0.3s ease;"></div>
+  </div>
+
+  <!-- Texto de carga -->
+  <p id="loading-text" style="color: #666; font-family: 'Inter', sans-serif; font-size: clamp(0.9rem, 1.5vw, 1.1rem); font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin: 0; opacity: 0;">Cargando Portfolio...</p>
+
+  <!-- Elementos animados de fondo -->
+  <div style="position: absolute; top: 20%; left: 15%; width: 3px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 50%; animation: float-dot 4s ease-in-out infinite;"></div>
+  <div style="position: absolute; bottom: 30%; right: 20%; width: 2px; height: 2px; background: rgba(255,255,255,0.15); border-radius: 50%; animation: float-dot 6s ease-in-out infinite 2s;"></div>
+  <div style="position: absolute; top: 60%; left: 80%; width: 2px; height: 2px; background: rgba(255,255,255,0.25); border-radius: 50%; animation: float-dot 5s ease-in-out infinite 4s;"></div>
+
+</div>
+
+<!-- CONTENIDO PRINCIPAL (OCULTO DURANTE CARGA) -->
+<div id="main-content" style="opacity: 0; visibility: hidden;">
+
 <div id="vanta-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;"></div>
 <div class="top-bar">
   <div class="top-bar-left">CESAR DEL VALLE</div>
@@ -102,5 +144,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
   <span id="dragme-bubble" class="img-drag-bubble">DRAG ME</span>
   <div id="egg-cursor"></div>
+
+</div> <!-- Cierre del main-content -->
+
 </body>
 </html>

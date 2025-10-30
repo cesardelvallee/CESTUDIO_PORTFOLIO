@@ -135,15 +135,29 @@ document.addEventListener('DOMContentLoaded', () => {
       .add(() => animateStackedImages());
   }
 
+  // Función especial para ejecutar después de la pantalla de carga
+  function startInitialAnimations() {
+    // Ejecutar animaciones normalmente
+    playHeroTitleAnimation();
+  }
+
+  // Hacer la función disponible globalmente para la pantalla de carga
+  window.startInitialAnimations = startInitialAnimations;
+
   // Llamar a la animación solo cuando el modelo 3D esté listo
   const modelViewer = document.querySelector('model-viewer');
   if (modelViewer) {
     modelViewer.addEventListener('load', () => {
-      playHeroTitleAnimation();
+      // Solo ejecutar automáticamente si no hay pantalla de carga
+      if (!document.getElementById('loading-screen')) {
+        playHeroTitleAnimation();
+      }
     });
   } else {
-    // Si no hay modelo, animar al cargar
-    playHeroTitleAnimation();
+    // Si no hay modelo y no hay pantalla de carga, animar al cargar
+    if (!document.getElementById('loading-screen')) {
+      playHeroTitleAnimation();
+    }
   }
 
   // Permitir reiniciar la animación haciendo doble click en el texto PORTFOLIO
@@ -160,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.setProperty('opacity', '0', '');
       img.style.setProperty('transform', (img.style.transform.replace(/scale\([^)]*\)/, '') + ' scale(0)').trim(), '');
     });
-    // Animación de entrada
+    // Animación de entrada con gsap.delayedCall para mayor fluidez
     stackedImgs.forEach((img, i) => {
-      setTimeout(() => {
+      gsap.delayedCall((180 + i * 180) / 1000, () => {
         gsap.to(img, {
           scale: 1.06,
           opacity: 1,
@@ -173,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(img, { scale: 1, duration: 0.08, ease: 'power1.out' });
           }
         });
-      }, 180 + i * 180);
+      });
     });
   }
 
@@ -412,3 +426,82 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 })();
 
+// ====== PANTALLA DE CARGA ======
+// Iniciar inmediatamente sin esperar DOMContentLoaded para fluidez
+(function() {
+    // Detectar si existe la pantalla de carga lo antes posible
+    function initializeLoading() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingProgress = document.getElementById('loading-progress');
+        const loadingText = document.getElementById('loading-text');
+        
+        if (loadingScreen && loadingProgress && loadingText) {
+            let progress = 0;
+            const loadingMessages = [
+                'Cargando Portfolio...',
+                'Preparando experiencia...',
+                'Casi listo...',
+                'Perfecto!'
+            ];
+            
+            // Mostrar texto inmediatamente
+            loadingText.style.opacity = '1';
+            
+            // Esperar un poco para que el emoji se cargue y luego iniciar progreso
+            setTimeout(() => {
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 8 + 3; // Incremento más lento: entre 3-11
+                    
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(progressInterval);
+                        
+                        // Cambiar texto final
+                        loadingText.textContent = loadingMessages[3];
+                        
+                        // Ocultar pantalla de carga después de un delay más corto
+                        setTimeout(() => {
+                            loadingScreen.classList.add('fade-out');
+                            
+                            // Mostrar el contenido principal y remover pantalla de carga
+                            setTimeout(() => {
+                                loadingScreen.remove();
+                                
+                                // Mostrar el contenido principal
+                                const mainContent = document.getElementById('main-content');
+                                if (mainContent) {
+                                    mainContent.style.opacity = '1';
+                                    mainContent.style.visibility = 'visible';
+                                    
+                                    // Ejecutar las animaciones del index inmediatamente
+                                    setTimeout(() => {
+                                        if (typeof window.startInitialAnimations === 'function') {
+                                            window.startInitialAnimations();
+                                        }
+                                    }, 50); // Reducido de 200ms a 50ms
+                                }
+                            }, 400); // Reducido de 800ms a 400ms
+                        }, 300); // Reducido de 1200ms a 300ms
+                    } else {
+                        // Cambiar mensaje según el progreso
+                        const messageIndex = Math.floor((progress / 100) * (loadingMessages.length - 1));
+                        loadingText.textContent = loadingMessages[messageIndex];
+                    }
+                    
+                    loadingProgress.style.width = progress + '%';
+                }, 150 + Math.random() * 300);
+            }, 800); // Dar tiempo para que el emoji se cargue
+        }
+    }
+
+    // Iniciar inmediatamente si ya existe, o esperar a que esté listo
+    if (document.getElementById('loading-screen')) {
+        initializeLoading();
+    } else {
+        document.addEventListener('DOMContentLoaded', initializeLoading);
+    }
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+    // El resto del código de la pantalla de carga se maneja arriba para mayor fluidez
+});
