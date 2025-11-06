@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hacer que al hacer click en CESAR DEL VALLE se vuelva al index
   const topBarLeft = document.querySelector('.top-bar-left');
   if (topBarLeft) {
-    topBarLeft.style.cursor = 'pointer';
+    // Removemos el cursor override que puede interferir
     topBarLeft.addEventListener('click', () => {
       window.location.href = 'index.html';
     });
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isGrabbing) {
         eggCursor.style.backgroundImage = "url('img/GRAB.svg')";
       } else {
-        const selectable = e.target.closest('.img-drag, a, button, input, textarea, .top-bar-left, .hero-btn, .bg-changer-btn');
+        const selectable = e.target.closest('.img-drag, a, button, input, textarea, .top-bar-left, .hero-btn, .bg-changer-btn, .control-btn, .player-toggle, .player-minimize, .progress-bar, .genre-dropdown, .volume-slider, .contact-link, .contact-card, .cta-button, .card-link');
         if (selectable) {
           eggCursor.style.backgroundImage = "url('img/HOVER.svg')";
         } else {
@@ -547,99 +547,23 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentBackgroundType = 'default';
   let currentVanta = null;
   
-  // Lista de configuraciones de fondos
+  // Lista de configuraciones de fondos optimizados
   const backgroundConfigs = [
     {
-      name: 'halo',
-      init: () => {
-        if (window.VANTA && window.VANTA.HALO) {
-          return VANTA.HALO({
-            el: '#vanta-bg',
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: Math.random() * 0.5 + 0.8,
-            baseColor: getRandomColor(),
-            backgroundColor: getRandomDarkColor(),
-            amplitudeFactor: Math.random() * 10 + 8,
-            size: Math.random() * 0.8 + 0.8
-          });
-        }
-      }
+      name: 'floating-orbs',
+      init: () => createFloatingOrbsBackground()
     },
     {
-      name: 'waves',
-      init: () => {
-        if (window.VANTA && window.VANTA.WAVES) {
-          return VANTA.WAVES({
-            el: '#vanta-bg',
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: getRandomSubtleColor(), // Colores más sutiles
-            waveHeight: Math.random() * 8 + 5, // Olas más bajas
-            waveSpeed: Math.random() * 0.3 + 0.2, // Movimiento más lento
-            zoom: Math.random() * 0.3 + 0.7, // Zoom más cerrado
-            shininess: Math.random() * 20 + 10, // Menos brillo
-            backgroundColor: 0x0a0a0a // Fondo oscuro
-          });
-        }
-      }
+      name: 'geometric-waves',
+      init: () => createGeometricWavesBackground()
     },
     {
-      name: 'clouds',
-      init: () => {
-        if (window.VANTA && window.VANTA.CLOUDS) {
-          return VANTA.CLOUDS({
-            el: '#vanta-bg',
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            cloudShadows: true,
-            skyColor: getRandomDarkColor(), // Cielo más oscuro
-            cloudColor: getRandomSubtleColor(), // Nubes más sutiles
-            speed: Math.random() * 0.4 + 0.3, // Movimiento más lento
-            backgroundColor: 0x0a0a0a // Fondo muy oscuro
-          });
-        }
-      }
+      name: 'neural-network',
+      init: () => createNeuralNetworkBackground()
     },
     {
-      name: 'birds',
-      init: () => {
-        if (window.VANTA && window.VANTA.BIRDS) {
-          return VANTA.BIRDS({
-            el: '#vanta-bg',
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            backgroundColor: getRandomDarkColor(),
-            color1: getRandomColor(),
-            color2: getRandomColor(),
-            birdSize: Math.random() * 0.5 + 0.8,
-            wingSpan: Math.random() * 10 + 15,
-            speedLimit: Math.random() * 2 + 3,
-            separation: Math.random() * 10 + 15,
-            alignment: Math.random() * 10 + 15,
-            cohesion: Math.random() * 10 + 15,
-            quantity: Math.random() * 2 + 2
-          });
-        }
-      }
+      name: 'cosmic-dust',
+      init: () => createCosmicDustBackground()
     },
     {
       name: 'particles',
@@ -652,6 +576,10 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       name: 'matrix',
       init: () => createMatrixBackground()
+    },
+    {
+      name: 'aurora',
+      init: () => createAuroraBackground()
     }
   ];
 
@@ -677,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // Crear fondo de partículas personalizado
+  // Crear fondo de partículas personalizado (optimizado)
   function createParticleBackground() {
     const vantaBg = document.getElementById('vanta-bg');
     vantaBg.innerHTML = '<canvas id="particles-canvas"></canvas>';
@@ -686,41 +614,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    canvas.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    `;
     
     const particles = [];
-    const particleCount = 120;
+    const particleCount = 80; // Reducido para mejor rendimiento
     const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#6c5ce7', '#fd79a8'];
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 4 + 1,
+        radius: Math.random() * 3 + 1,
         color: colors[Math.floor(Math.random() * colors.length)],
-        dx: (Math.random() - 0.5) * 3,
-        dy: (Math.random() - 0.5) * 3,
+        dx: (Math.random() - 0.5) * 2,
+        dy: (Math.random() - 0.5) * 2,
         alpha: Math.random() * 0.7 + 0.3,
         pulse: Math.random() * 0.02 + 0.01
       });
     }
     
     function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Dibujar conexiones entre partículas cercanas
+      // Dibujar conexiones entre partículas cercanas (optimizado)
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 100) {
-            ctx.globalAlpha = 0.15 * (1 - distance / 100);
+          if (distance < 120) {
+            ctx.globalAlpha = 0.2 * (1 - distance / 120);
             ctx.strokeStyle = particles[i].color;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -753,7 +685,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Dibujar partícula con glow effect
         ctx.globalAlpha = particle.alpha;
         ctx.shadowColor = particle.color;
-        ctx.shadowBlur = 15;
+        ctx.shadowBlur = 10;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
@@ -764,14 +696,19 @@ document.addEventListener('DOMContentLoaded', function() {
       requestAnimationFrame(animateParticles);
     }
     
-    animateParticles();
+    let animationId = requestAnimationFrame(animateParticles);
     
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
     
-    return { destroy: () => vantaBg.innerHTML = '' };
+    return { 
+      destroy: () => {
+        cancelAnimationFrame(animationId);
+        vantaBg.innerHTML = '';
+      }
+    };
   }
 
   // Crear fondo de gradiente animado
@@ -835,6 +772,365 @@ document.addEventListener('DOMContentLoaded', function() {
       clearInterval(matrixInterval);
       vantaBg.innerHTML = '';
     }};
+  }
+
+  // Crear fondo de esferas flotantes (reemplaza HALO)
+  function createFloatingOrbsBackground() {
+    const vantaBg = document.getElementById('vanta-bg');
+    vantaBg.innerHTML = '<div id="floating-orbs"></div>';
+    
+    const container = document.getElementById('floating-orbs');
+    container.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+      overflow: hidden;
+    `;
+    
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#6c5ce7'];
+    
+    for (let i = 0; i < 8; i++) {
+      const orb = document.createElement('div');
+      const size = Math.random() * 100 + 50;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      orb.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        background: radial-gradient(circle at 30% 30%, ${color}88, ${color}22, transparent);
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: float-orb-${i} ${Math.random() * 10 + 15}s infinite linear;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+      `;
+      
+      // Agregar keyframes únicas para cada esfera
+      const keyframes = `
+        @keyframes float-orb-${i} {
+          0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+          25% { transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(${0.8 + Math.random() * 0.4}) rotate(90deg); }
+          50% { transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(${0.8 + Math.random() * 0.4}) rotate(180deg); }
+          75% { transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(${0.8 + Math.random() * 0.4}) rotate(270deg); }
+          100% { transform: translate(0, 0) scale(1) rotate(360deg); }
+        }
+      `;
+      
+      if (!document.getElementById(`orb-style-${i}`)) {
+        const style = document.createElement('style');
+        style.id = `orb-style-${i}`;
+        style.textContent = keyframes;
+        document.head.appendChild(style);
+      }
+      
+      container.appendChild(orb);
+    }
+    
+    return { 
+      destroy: () => {
+        vantaBg.innerHTML = '';
+        // Limpiar estilos
+        for (let i = 0; i < 8; i++) {
+          const style = document.getElementById(`orb-style-${i}`);
+          if (style) style.remove();
+        }
+      }
+    };
+  }
+
+  // Crear fondo de ondas geométricas (reemplaza WAVES)
+  function createGeometricWavesBackground() {
+    const vantaBg = document.getElementById('vanta-bg');
+    vantaBg.innerHTML = '<div id="geometric-waves"></div>';
+    
+    const container = document.getElementById('geometric-waves');
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+    const primaryColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    container.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+      overflow: hidden;
+    `;
+    
+    // Crear múltiples capas de ondas
+    for (let i = 0; i < 5; i++) {
+      const wave = document.createElement('div');
+      wave.style.cssText = `
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent 40%, ${primaryColor}${Math.floor(Math.random() * 30 + 10).toString(16)} 50%, transparent 60%);
+        animation: geometric-wave-${i} ${Math.random() * 20 + 20}s infinite linear;
+        left: -50%;
+        top: ${Math.random() * 100 - 50}%;
+        transform-origin: center;
+      `;
+      
+      const keyframes = `
+        @keyframes geometric-wave-${i} {
+          0% { transform: rotate(0deg) translateY(0px); }
+          100% { transform: rotate(360deg) translateY(${Math.random() * 100 - 50}px); }
+        }
+      `;
+      
+      if (!document.getElementById(`wave-style-${i}`)) {
+        const style = document.createElement('style');
+        style.id = `wave-style-${i}`;
+        style.textContent = keyframes;
+        document.head.appendChild(style);
+      }
+      
+      container.appendChild(wave);
+    }
+    
+    return { 
+      destroy: () => {
+        vantaBg.innerHTML = '';
+        for (let i = 0; i < 5; i++) {
+          const style = document.getElementById(`wave-style-${i}`);
+          if (style) style.remove();
+        }
+      }
+    };
+  }
+
+  // Crear fondo de red neuronal (reemplaza CLOUDS)
+  function createNeuralNetworkBackground() {
+    const vantaBg = document.getElementById('vanta-bg');
+    vantaBg.innerHTML = '<canvas id="neural-canvas"></canvas>';
+    
+    const canvas = document.getElementById('neural-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+    `;
+    
+    const nodes = [];
+    const nodeCount = 50;
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+    const primaryColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Crear nodos
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 3 + 1
+      });
+    }
+    
+    function animateNetwork() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Actualizar y dibujar nodos
+      nodes.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+        
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        
+        // Dibujar nodo
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = primaryColor + '80';
+        ctx.fill();
+      });
+      
+      // Dibujar conexiones
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 150) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = primaryColor + Math.floor((1 - distance / 150) * 255).toString(16).padStart(2, '0');
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      
+      requestAnimationFrame(animateNetwork);
+    }
+    
+    let animationId = requestAnimationFrame(animateNetwork);
+    
+    return { 
+      destroy: () => {
+        cancelAnimationFrame(animationId);
+        vantaBg.innerHTML = '';
+      }
+    };
+  }
+
+  // Crear fondo de polvo cósmico (reemplaza BIRDS)
+  function createCosmicDustBackground() {
+    const vantaBg = document.getElementById('vanta-bg');
+    vantaBg.innerHTML = '<canvas id="cosmic-canvas"></canvas>';
+    
+    const canvas = document.getElementById('cosmic-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f0f 100%);
+    `;
+    
+    const particles = [];
+    const particleCount = 200;
+    const colors = ['#ffffff', '#feca57', '#ff9ff3', '#4ecdc4', '#ff6b6b'];
+    
+    // Crear partículas
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        opacity: Math.random() * 0.8 + 0.2,
+        twinkle: Math.random() * 0.02 + 0.01
+      });
+    }
+    
+    function animateCosmic() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.opacity += particle.twinkle;
+        
+        if (particle.opacity >= 1 || particle.opacity <= 0.1) {
+          particle.twinkle *= -1;
+        }
+        
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+        
+        // Dibujar partícula con efecto de brillo
+        ctx.save();
+        ctx.globalAlpha = particle.opacity;
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.fill();
+        ctx.restore();
+      });
+      
+      requestAnimationFrame(animateCosmic);
+    }
+    
+    let animationId = requestAnimationFrame(animateCosmic);
+    
+    return { 
+      destroy: () => {
+        cancelAnimationFrame(animationId);
+        vantaBg.innerHTML = '';
+      }
+    };
+  }
+
+  // Crear fondo de aurora boreal
+  function createAuroraBackground() {
+    const vantaBg = document.getElementById('vanta-bg');
+    vantaBg.innerHTML = '<div id="aurora-container"></div>';
+    
+    const container = document.getElementById('aurora-container');
+    container.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      overflow: hidden;
+    `;
+    
+    const colors = [
+      'rgba(0, 255, 146, 0.3)',
+      'rgba(0, 204, 255, 0.3)', 
+      'rgba(147, 0, 211, 0.3)',
+      'rgba(255, 20, 147, 0.3)',
+      'rgba(255, 215, 0, 0.3)'
+    ];
+    
+    for (let i = 0; i < 6; i++) {
+      const aurora = document.createElement('div');
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      aurora.style.cssText = `
+        position: absolute;
+        width: 100%;
+        height: ${Math.random() * 200 + 100}px;
+        background: linear-gradient(90deg, transparent, ${color}, transparent);
+        top: ${Math.random() * 80}%;
+        filter: blur(2px);
+        animation: aurora-flow-${i} ${Math.random() * 15 + 10}s infinite ease-in-out;
+        transform-origin: center;
+      `;
+      
+      const keyframes = `
+        @keyframes aurora-flow-${i} {
+          0%, 100% { 
+            transform: translateX(-100%) skewX(${Math.random() * 20 - 10}deg); 
+            opacity: 0.3;
+          }
+          50% { 
+            transform: translateX(100%) skewX(${Math.random() * 20 - 10}deg); 
+            opacity: 0.8;
+          }
+        }
+      `;
+      
+      if (!document.getElementById(`aurora-style-${i}`)) {
+        const style = document.createElement('style');
+        style.id = `aurora-style-${i}`;
+        style.textContent = keyframes;
+        document.head.appendChild(style);
+      }
+      
+      container.appendChild(aurora);
+    }
+    
+    return { 
+      destroy: () => {
+        vantaBg.innerHTML = '';
+        for (let i = 0; i < 6; i++) {
+          const style = document.getElementById(`aurora-style-${i}`);
+          if (style) style.remove();
+        }
+      }
+    };
   }
 
   // Función principal para cambiar fondo
@@ -950,3 +1246,403 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   document.head.appendChild(style);
 })();
+
+// ===== REPRODUCTOR MUSICAL WIDGET =====
+(function() {
+  // Tu canción favorita de cada género
+  const musicDatabase = {
+    'rock-ingles': { title: 'I Still Haven\'t Found What I\'m Looking For', artist: 'U2', src: 'music/U2 - I Still Haven\'t Found What I\'m Looking For (Official Music Video).mp3' },
+    'espanolada': { title: 'Llamando a la tierra', artist: 'M-Clan', src: 'music/M-Clan - Llamando a la Tierra (letra).mp3' },
+    'reggaeton': { title: 'Guaya', artist: 'Don Omar', src: 'music/Don Omar - Guaya Guaya (Audio).mp3' },
+    'techno': { title: 'Snow Crystal', artist: 'Babalos', src: 'music/Babalos - Snow Crystal [HQ] - Babalos.mp3' },
+    'folk': { title: 'Vagabond', artist: 'Caamp', src: 'music/Vagabond.mp3' },
+    'indie': { title: 'Si Algo Es Puro Vale El Doble', artist: 'West Srk', src: 'music/West Srk - Si Algo Es Puro Vale El Doble (Video Oficial) - West Srk.mp3' },
+    'trap-urbano': { title: 'Moonlights Puppet Remix', artist: 'Al Safir, Interferencias', src: 'music/Interferencias - MOONLIGHT\'S PUPPET (REMIX) feat. Al Safir (Videoclip Oficial).mp3' },
+    'pop-ingles': { title: 'Somebody That I Used to Know', artist: 'Gotye ft. Kimbra', src: 'music/Gotye - Somebody That I Used to Know.mp3' }
+  };
+
+  let currentGenre = 'rock-ingles';
+  let isPlaying = false;
+  let isMinimized = false;
+
+  // Array de géneros para navegación
+  const genreList = ['rock-ingles', 'espanolada', 'reggaeton', 'techno', 'folk', 'indie', 'trap-urbano', 'pop-ingles'];
+  let currentGenreIndex = 0;
+
+  // Elementos DOM
+  const musicWidget = document.getElementById('music-player');
+  const audio = document.getElementById('audio-player');
+  const playPauseBtn = document.getElementById('play-pause');
+  const playPauseIcon = document.getElementById('play-pause-icon');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const genreSelect = document.getElementById('genre-select');
+  const currentGenreText = document.getElementById('current-genre-text');
+  const songTitle = document.getElementById('song-title');
+  const songArtist = document.getElementById('song-artist');
+  const progressFill = document.getElementById('progress-fill');
+  const currentTimeSpan = document.getElementById('current-time');
+  const totalTimeSpan = document.getElementById('total-time');
+  const volumeSlider = document.getElementById('volume-slider');
+  const minimizeBtn = document.getElementById('player-minimize');
+  const playerToggle = document.getElementById('player-toggle');
+  const progressBar = document.querySelector('.progress-bar');
+
+  // Inicializar reproductor
+  function initPlayer() {
+    updateCurrentSong();
+    audio.volume = volumeSlider.value / 100;
+    
+    // Event listeners
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    
+    // Debug: verificar que los botones existen
+    console.log('prevBtn:', prevBtn);
+    console.log('nextBtn:', nextBtn);
+    
+    if (prevBtn) prevBtn.addEventListener('click', previousSong);
+    if (nextBtn) nextBtn.addEventListener('click', nextSong);
+    
+    genreSelect.addEventListener('change', changeGenre);
+    volumeSlider.addEventListener('input', changeVolume);
+    minimizeBtn.addEventListener('click', toggleMinimize);
+    playerToggle.addEventListener('click', togglePlayPause);
+    progressBar.addEventListener('click', seekTo);
+    
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+      // Solo si el music player está visible
+      if (musicWidget && !musicWidget.style.display === 'none') {
+        switch(e.key) {
+          case 'ArrowLeft':
+            e.preventDefault();
+            previousSong();
+            break;
+          case 'ArrowRight':
+            e.preventDefault();
+            nextSong();
+            break;
+          case ' ':
+            e.preventDefault();
+            togglePlayPause();
+            break;
+        }
+      }
+    });
+    
+    // Audio events
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('ended', () => {
+      // Al terminar, pasar automáticamente a la siguiente canción
+      nextSong();
+    });
+    
+    // Agregar manejo de errores para diagnóstico
+    audio.addEventListener('error', (e) => {
+      console.error('Error al cargar audio:', e);
+      console.error('Archivo problemático:', audio.src);
+      showNotification('Error al cargar la canción');
+      playPauseIcon.src = 'img/PLAY.svg';
+      playPauseIcon.alt = 'Play';
+      isPlaying = false;
+    });
+    
+    audio.addEventListener('loadstart', () => {
+      console.log('Iniciando carga de:', audio.src);
+    });
+    
+    audio.addEventListener('canplay', () => {
+      console.log('Audio listo para reproducir:', audio.src);
+    });
+    
+    console.log('🎵 Reproductor musical personal inicializado');
+  }
+
+  function updateCurrentSong() {
+    const song = musicDatabase[currentGenre];
+    
+    songTitle.textContent = song.title;
+    songArtist.textContent = song.artist;
+    audio.src = song.src;
+    
+    // Actualizar nombre del género
+    const genreNames = {
+      'rock-ingles': 'Rock Inglés',
+      'espanolada': 'Españolada',
+      'reggaeton': 'Reggaetón',
+      'techno': 'Techno',
+      'folk': 'Folk',
+      'indie': 'Indie',
+      'trap-urbano': 'Trap/Urbano',
+      'pop-ingles': 'Pop Inglés'
+    };
+    
+    currentGenreText.textContent = genreNames[currentGenre];
+  }
+
+  function togglePlayPause() {
+    if (isPlaying) {
+      audio.pause();
+      playPauseIcon.src = 'img/PLAY.svg';
+      playPauseIcon.alt = 'Play';
+      playerToggle.textContent = '🎵';
+      isPlaying = false;
+    } else {
+      audio.play().then(() => {
+        playPauseIcon.src = 'img/PAUSE.svg';
+        playPauseIcon.alt = 'Pause';
+        playerToggle.textContent = '🎶';
+        isPlaying = true;
+      }).catch(error => {
+        console.log('Error al reproducir:', error);
+        // Si falla la reproducción automática, esperar interacción del usuario
+        showNotification('Haz clic para reproducir música');
+      });
+    }
+  }
+
+  function changeGenre() {
+    const wasPlaying = isPlaying;
+    
+    // Pausar canción actual
+    if (isPlaying) {
+      audio.pause();
+      isPlaying = false;
+    }
+    
+    currentGenre = genreSelect.value;
+    
+    // Actualizar índice para sincronizar con botones prev/next
+    currentGenreIndex = genreList.indexOf(currentGenre);
+    
+    updateCurrentSong();
+    
+    // Si estaba reproduciendo, continuar con la nueva canción
+    if (wasPlaying) {
+      // Pequeño delay para asegurar que el archivo se carga
+      setTimeout(() => {
+        audio.play().then(() => {
+          playPauseIcon.src = 'img/PAUSE.svg';
+          playPauseIcon.alt = 'Pause';
+          playerToggle.textContent = '🎶';
+          isPlaying = true;
+        }).catch(error => {
+          console.error('Error al reproducir nueva canción:', error);
+          showNotification('Error al reproducir esta canción');
+          playPauseIcon.src = 'img/PLAY.svg';
+          playPauseIcon.alt = 'Play';
+          isPlaying = false;
+        });
+      }, 100);
+    }
+    
+    // Mostrar notificación del cambio
+    const genreNames = {
+      'rock-ingles': 'Rock Inglés',
+      'espanolada': 'Españolada',
+      'reggaeton': 'Reggaetón',
+      'techno': 'Techno',
+      'folk': 'Folk',
+      'indie': 'Indie',
+      'trap-urbano': 'Trap/Urbano',
+      'pop-ingles': 'Pop Inglés'
+    };
+    showNotification(`Ahora: ${genreNames[currentGenre]}`);
+  }
+
+  function changeVolume() {
+    audio.volume = volumeSlider.value / 100;
+  }
+
+  function previousSong() {
+    console.log('previousSong() called');
+    console.log('currentGenreIndex before:', currentGenreIndex);
+    
+    currentGenreIndex = (currentGenreIndex - 1 + genreList.length) % genreList.length;
+    currentGenre = genreList[currentGenreIndex];
+    
+    console.log('currentGenreIndex after:', currentGenreIndex);
+    console.log('new currentGenre:', currentGenre);
+    
+    genreSelect.value = currentGenre;
+    updateCurrentSong();
+    
+    if (isPlaying) {
+      audio.play();
+    }
+    
+    // Mostrar notificación
+    const genreNames = {
+      'rock-ingles': 'Rock Inglés',
+      'espanolada': 'Españolada',
+      'reggaeton': 'Reggaetón',
+      'techno': 'Techno',
+      'folk': 'Folk',
+      'indie': 'Indie',
+      'trap-urbano': 'Trap/Urbano',
+      'pop-ingles': 'Pop Inglés'
+    };
+    showNotification(`← ${genreNames[currentGenre]}`);
+  }
+
+  function nextSong() {
+    console.log('nextSong() called');
+    console.log('currentGenreIndex before:', currentGenreIndex);
+    
+    currentGenreIndex = (currentGenreIndex + 1) % genreList.length;
+    currentGenre = genreList[currentGenreIndex];
+    
+    console.log('currentGenreIndex after:', currentGenreIndex);
+    console.log('new currentGenre:', currentGenre);
+    
+    genreSelect.value = currentGenre;
+    updateCurrentSong();
+    
+    if (isPlaying) {
+      audio.play();
+    }
+    
+    // Mostrar notificación
+    const genreNames = {
+      'rock-ingles': 'Rock Inglés',
+      'espanolada': 'Españolada',
+      'reggaeton': 'Reggaetón',
+      'techno': 'Techno',
+      'folk': 'Folk',
+      'indie': 'Indie',
+      'trap-urbano': 'Trap/Urbano',
+      'pop-ingles': 'Pop Inglés'
+    };
+    showNotification(`${genreNames[currentGenre]} →`);
+  }
+
+  function toggleMinimize() {
+    isMinimized = !isMinimized;
+    musicWidget.classList.toggle('minimized', isMinimized);
+    minimizeBtn.textContent = isMinimized ? '+' : '−';
+  }
+
+  function seekTo(e) {
+    const rect = progressBar.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
+  }
+
+  function updateProgress() {
+    if (audio.duration) {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = progress + '%';
+      
+      currentTimeSpan.textContent = formatTime(audio.currentTime);
+    }
+  }
+
+  function updateDuration() {
+    totalTimeSpan.textContent = formatTime(audio.duration);
+  }
+
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  function showNotification(message) {
+    // Crear notificación temporal
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      z-index: 4000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Animar entrada
+    setTimeout(() => notification.style.opacity = '1', 10);
+    
+    // Remover después de 3 segundos
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    // Esperar un poco para asegurar que todo el CSS esté cargado
+    setTimeout(initPlayer, 500);
+  });
+
+})();
+
+// ===== ABOUT PAGE - EXQUISITE ANIMATIONS =====
+document.addEventListener('DOMContentLoaded', () => {
+  // Solo ejecutar en la página About
+  if (!document.body.classList.contains('about-page')) return;
+
+  // Animaciones elegantes de entrada
+  function elegantAnimations() {
+    const elements = [
+      { selector: '.elegant-title', delay: 0 },
+      { selector: '.title-accent', delay: 200 },
+      { selector: '.name-elegant', delay: 400 },
+      { selector: '.role-elegant', delay: 500 },
+      { selector: '.description-elegant', delay: 600 },
+      { selector: '.visual-element', delay: 300 },
+      { selector: '.section-title-elegant', delay: 800 },
+      { selector: '.section-line', delay: 900 },
+      { selector: '.skill-block', delay: 1000 },
+      { selector: '.info-grid-elegant', delay: 1200 }
+    ];
+
+    elements.forEach(({ selector, delay }) => {
+      const els = document.querySelectorAll(selector);
+      els.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, delay + (index * 100));
+      });
+    });
+  }
+
+  // Smooth hover effects para skill blocks
+  function addHoverEffects() {
+    const skillBlocks = document.querySelectorAll('.skill-block');
+    
+    skillBlocks.forEach(block => {
+      block.addEventListener('mouseenter', () => {
+        block.style.transform = 'translateY(-4px)';
+        block.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      });
+      
+      block.addEventListener('mouseleave', () => {
+        block.style.transform = 'translateY(0)';
+      });
+    });
+  }
+
+  // Inicializar animaciones elegantes
+  setTimeout(() => {
+    elegantAnimations();
+    addHoverEffects();
+  }, 100);
+});

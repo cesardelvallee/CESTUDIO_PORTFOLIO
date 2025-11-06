@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="emoji" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 72 72">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="line">
+    <path class="st0" d="M21.66,54.72c.42.17.89.28,1.37.28.74,0,1.47-.28,2.11-.74l26.05-15.25.26-.28c.68-.74,1.05-1.64,1.05-2.67s-.37-1.98-1.05-2.67l-.26-.28-26.05-15.37c-.95-.79-2.32-.96-3.47-.45-1.32.57-2.16,1.98-2.16,3.52v30.39c0,1.53.84,2.95,2.16,3.52Z"/>
+  </g>
+</svg>

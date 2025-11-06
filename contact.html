@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - César Del Valle</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body class="contact-page">
+  
+  <!-- Cursor personalizado -->
+  <div id="egg-cursor"></div>
+  
+  <!-- Background con animación -->
+  <div id="background-container">
+    <canvas id="background-canvas"></canvas>
+  </div>
+  
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span>César Del Valle</span>
+    </div>
+    <div class="top-bar-center">
+    </div>
+    <div class="top-bar-right">
+    </div>
+  </div>
+  
+  <!-- Contenido Principal -->
+  <div class="contact-container">
+    <div class="contact-content">
+      
+      <!-- Cards de contacto -->
+      <div class="contact-grid">
+        
+        <!-- Email Card -->
+        <div class="contact-card email-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Email</h3>
+            <p class="card-description">Para colaboraciones y proyectos</p>
+            <a href="mailto:cesardelvallefuentes@gmail.com" class="card-link">
+              cesardelvallefuentes@gmail.com
+            </a>
+          </div>
+        </div>
+        
+        <!-- LinkedIn Card -->
+        <div class="contact-card linkedin-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 8A6 6 0 0 1 22 14V21H18V14A2 2 0 0 0 16 12A2 2 0 0 0 14 14V21H10V14A6 6 0 0 1 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">LinkedIn</h3>
+            <p class="card-description">Conectemos profesionalmente</p>
+            <a href="https://linkedin.com/in/cesar-del-valle-fuentes-518834275" target="_blank" class="card-link">
+              César Del Valle Fuentes
+            </a>
+          </div>
+        </div>
+        
+        <!-- Instagram Card -->
+        <div class="contact-card instagram-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Instagram</h3>
+            <p class="card-description">Sígueme para ver mi trabajo</p>
+            <a href="https://www.instagram.com/cesardelvallee/" target="_blank" class="card-link">
+              @cesardelvallee
+            </a>
+          </div>
+        </div>
+        
+        <!-- Horario Card -->
+        <div class="contact-card schedule-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Disponibilidad</h3>
+            <p class="card-description">Respuesta en 24h</p>
+            <span class="card-link">Lun - Vie, 9:00 - 18:00</span>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Call to Action -->
+      <div class="contact-cta">
+        <h2 class="cta-title">¿Listo para colaborar?</h2>
+        <p class="cta-description">
+          Cuéntame sobre tu proyecto y trabajemos juntos para crear algo increíble.
+        </p>
+        <a href="mailto:cesardelvallefuentes@gmail.com?subject=Nuevo%20Proyecto&body=Hola%20César,%0A%0AMe%20gustaría%20hablar%20contigo%20sobre..." class="cta-button">
+          Enviar Mensaje
+        </a>
+      </div>
+      
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

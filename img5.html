@@ -267,7 +267,7 @@
   <section id="video-section" style="min-height:500vh;background:#d4c4a8;padding-bottom:4rem;">
     <div class="video__content">
       <figure class="video-figure">
-        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" autoplay loop muted playsinline></video>
+        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" loop muted playsinline></video>
       </figure>
     </div>
   </section>
@@ -348,6 +348,47 @@
         );
       }
     }
+
+    // Intersection Observer para activar sonido cuando el video es visible
+    const video = document.getElementById('kaleo-video');
+    let hasPlayedWithSound = false;
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasPlayedWithSound) {
+          // El video es visible, activar sonido y reproducir
+          video.muted = false;
+          video.play().then(() => {
+            hasPlayedWithSound = true;
+            console.log('Video reproduciéndose con sonido');
+          }).catch(error => {
+            console.log('No se pudo reproducir con sonido automáticamente:', error);
+            // Si falla, mantener muted hasta interacción del usuario
+            video.muted = true;
+            video.play();
+            
+            // Agregar event listener para activar sonido en primera interacción
+            const enableAudioOnClick = () => {
+              video.muted = false;
+              hasPlayedWithSound = true;
+              document.removeEventListener('click', enableAudioOnClick);
+              document.removeEventListener('touchstart', enableAudioOnClick);
+            };
+            
+            document.addEventListener('click', enableAudioOnClick);
+            document.addEventListener('touchstart', enableAudioOnClick);
+          });
+        } else if (!entry.isIntersecting && hasPlayedWithSound) {
+          // El video no es visible, pausar (opcional)
+          // video.pause();
+        }
+      });
+    }, {
+      threshold: 0.5 // Activar cuando al menos 50% del video sea visible
+    });
+
+    // Observar el video
+    videoObserver.observe(video);
   </script>
 </body>
 </html>
