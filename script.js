@@ -1386,13 +1386,14 @@ document.addEventListener('DOMContentLoaded', function() {
       audio.pause();
       playPauseIcon.src = 'img/PLAY.svg';
       playPauseIcon.alt = 'Play';
-      playerToggle.textContent = '🎵';
+      playerToggle.innerHTML = '<img src="img/MUSIC_LOGO.svg" alt="Music" style="width: 24px; height: 24px;">';
       isPlaying = false;
     } else {
       audio.play().then(() => {
         playPauseIcon.src = 'img/PAUSE.svg';
         playPauseIcon.alt = 'Pause';
-        playerToggle.textContent = '🎶';
+        playerToggle.innerHTML = '<img src="img/MUSIC_LOGO.svg" alt="Music" style="width: 24px; height: 24px;">';
+        isPlaying = true;
         isPlaying = true;
       }).catch(error => {
         console.log('Error al reproducir:', error);
@@ -1425,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', function() {
         audio.play().then(() => {
           playPauseIcon.src = 'img/PAUSE.svg';
           playPauseIcon.alt = 'Pause';
-          playerToggle.textContent = '🎶';
+          playerToggle.innerHTML = '<img src="img/MUSIC_LOGO.svg" alt="Music" style="width: 24px; height: 24px;">';
           isPlaying = true;
         }).catch(error => {
           console.error('Error al reproducir nueva canción:', error);
