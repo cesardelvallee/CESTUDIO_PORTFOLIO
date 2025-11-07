@@ -538,13 +538,11 @@ body.about-page .hero-subtitle {
   font-size: 0.85rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.25s ease;
   position: relative;
   cursor: pointer;
-  background: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
+  display: inline-block;
+  padding-bottom: 6px;
 }
 
 .top-bar-left:hover {
@@ -554,16 +552,52 @@ body.about-page .hero-subtitle {
 .top-bar-left::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, #4ecdc4, transparent);
-  transition: width 0.4s ease;
+  transition: width 0.36s cubic-bezier(0.22, 0.59, 0.2, 1);
+  border-radius: 2px;
 }
 
 .top-bar-left:hover::after {
+  width: 100%;
+}
+.top-bar-right {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.top-bar-right:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.top-bar-right::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ecdc4, transparent);
+  transition: width 0.36s cubic-bezier(0.22, 0.59, 0.2, 1);
+  border-radius: 2px;
+}
+
+.top-bar-right:hover::after {
   width: 100%;
 }
 /* Animación para el texto del botón CONTACT ME */
@@ -1644,59 +1678,40 @@ img {
   }
 }
 
-/* EFECTO GLOW ANIMADO */
-.top-bar-left {
+/* UNIFICAR TIPOGRAFÍA Y EFECTO HOVER EN TOP BAR */
+.top-bar-left, .top-bar-right, .contact-link, .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.25s ease;
   position: relative;
-  transition: all 0.3s ease;
   cursor: pointer;
+  display: inline-block;
+  padding-bottom: 6px;
 }
 
-.top-bar-left::before {
+.top-bar-left::after, .top-bar-right::after, .contact-link::after, .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -3px;
-  left: 0;
-  right: 0;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
   height: 1px;
-  background: #4ecdc4;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
+  background: linear-gradient(90deg, transparent, #4ecdc4, transparent);
+  transition: width 0.36s cubic-bezier(0.22, 0.59, 0.2, 1);
+  border-radius: 2px;
 }
 
-.top-bar-left:hover::before {
-  transform: scaleX(1);
+.top-bar-left:hover::after, .top-bar-right:hover::after, .contact-link:hover::after, .nav-link:hover::after {
+  width: 100%;
 }
 
-.top-bar-left:hover {
-  color: #4ecdc4;
-  text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
-}
-
-.contact-link {
-  position: relative;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.contact-link::before {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #4ecdc4;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.contact-link:hover::before {
-  transform: scaleX(1);
-}
-
-.contact-link:hover {
-  color: #4ecdc4;
-  text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+.top-bar-left:hover, .top-bar-right:hover, .contact-link:hover, .nav-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: none;
 }
