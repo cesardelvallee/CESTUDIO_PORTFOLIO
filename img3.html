@@ -1,34 +1,343 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <style>html, body { margin:0!important; padding:0!important; box-sizing:border-box!important; }</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imagen 3</title>
+  <title>Proyecto 03</title>
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dragme.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <style>
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes rotate-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.4; }
+      50% { transform: scaleY(1.2); opacity: 1; }
+    }
+    
+    .scroll-item {
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .scroll-item.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    /* Top bar color override for this page */
+    .top-bar-left,
+    .top-bar-right {
+      color: #1f4a3d !important;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    
+    /* Tablet Design (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr !important;
+        gap: 6vw !important;
+        text-align: center;
+      }
+      
+      .project-info {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .project-details-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 3rem !important;
+      }
+    }
+    
+    /* Mobile Design (max-width: 768px) */
+    @media (max-width: 768px) {
+      .main-section {
+        min-height: 100vh !important;
+        padding: 15vh 4vw 6vh 4vw !important;
+      }
+      
+      .main-grid {
+        gap: 4rem !important;
+      }
+      
+      .project-number-category {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+      }
+      
+      .project-number-category .divider {
+        width: 60px !important;
+        transform: rotate(90deg);
+      }
+      
+      .project-details-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center;
+      }
+      
+      .technical-info {
+        margin: 2rem 0 !important;
+      }
+      
+      .right-column {
+        padding: 1rem !important;
+      }
+    }
+    
+    /* Small Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+      .main-section {
+        padding: 12vh 3vw 4vh 3vw !important;
+      }
+      
+      .project-info {
+        max-width: 100% !important;
+      }
+      
+      .main-title {
+        font-size: clamp(2.5rem, 12vw, 4rem) !important;
+        line-height: 0.9 !important;
+      }
+      
+      .project-description {
+        font-size: clamp(1rem, 4vw, 1.2rem) !important;
+        margin-bottom: 2rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="top-bar">
       <div class="top-bar-left" id="home-link">CESAR DEL VALLE</div>
-      <div class="top-bar-right">ABOUT ME</div>
+      <div class="top-bar-right">MOCKUP DESIGN</div>
     </div>
-  <div class="center-hero-text">
-    <div class="hero-title">Imagen 3</div>
-    <div class="hero-subtitle">Has hecho doble click en la imagen 3.</div>
+  <div class="main-section" style="min-height:80vh;background:#a8d4c8;display:flex;align-items:center;justify-content:center;padding:10vh 5vw 4vh 5vw;">
+    
+    <div class="main-grid" style="max-width:1400px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;">
+      
+      <!-- Left Column - Project Info -->
+      <div class="project-info" style="opacity:0; animation:fadeInUp 0.9s ease-out 0.4s forwards; position:relative;">
+        
+        <!-- Elemento decorativo sutil -->
+        <div style="position:absolute; top:-20px; left:-30px; width:4px; height:60px; background:linear-gradient(180deg, #1f4a3d 0%, transparent 100%); border-radius:2px; opacity:0; animation:fadeInUp 1s ease-out 0.3s forwards;"></div>
+        
+        <!-- Project Number & Category -->
+        <div class="project-number-category" style="display:flex;align-items:center;margin-bottom:2.5rem; opacity:0; animation:fadeInUp 0.9s ease-out 0.45s forwards;">
+          <span style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,0.9vw,0.85rem);font-weight:600;letter-spacing:0.25em;text-transform:uppercase;">Project 03</span>
+          <div class="divider" style="width:50px;height:1px;background:linear-gradient(90deg, #2a5c4d 0%, #47805c 100%);margin:0 1.8rem;"></div>
+          <span style="color:#47805c;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,0.9vw,0.85rem);font-weight:400;letter-spacing:0.15em; opacity:0; animation:fadeInUp 0.9s ease-out 0.5s forwards;">Product Mockup</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="main-title" style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(3.8rem,7.5vw,6.5rem);font-weight:800;line-height:0.82;letter-spacing:-0.04em;margin:0 0 2rem 0; opacity:0; animation:fadeInUp 0.95s ease-out 0.6s forwards; text-shadow:0 2px 8px rgba(31,74,61,0.1);">ATÚN<br><span style="font-weight:200;font-style:italic;color:#47805c;">Premium Mockup</span></h1>
+
+        <!-- Description -->
+        <p class="project-description" style="color:#2d5247;font-family:'Inter',sans-serif;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.6;font-weight:300;margin:0 0 3.5rem 0;max-width:520px; opacity:0; animation:fadeInUp 0.9s ease-out 0.75s forwards;">Diseño de mockup profesional para <strong style="font-weight:500;color:#1f4a3d;">latas de atún premium</strong>. Presentación fotorrealista que destaca la calidad del producto con <em style="color:#47805c;">iluminación y composición</em> cuidadosamente diseñadas para impacto comercial.</p>
+
+        <!-- Elemento visual separador -->
+        <div style="width:80px;height:2px;background:linear-gradient(90deg, #1f4a3d 0%, transparent 100%);margin:0 0 3rem 0;opacity:0;animation:fadeInUp 0.8s ease-out 0.8s forwards;"></div>
+
+        <!-- Project Details - Con scroll reveal -->
+        <div class="scroll-reveal" style="margin-bottom:2rem;">
+          
+          <!-- Lista vertical simple -->
+          <div>
+            
+            <!-- Role -->
+            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #1f4a3d; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
+              <h4 style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Role</h4>
+              <p style="color:#47805c;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Mockup Designer · Product Visualization · Art Direction</p>
+            </div>
+            
+            <!-- Product -->
+            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #47805c; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
+              <h4 style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Product</h4>
+              <p style="color:#47805c;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Premium Tuna Can · Food Packaging</p>
+            </div>
+            
+            <!-- Software -->
+            <div class="scroll-item" style="border-left:3px solid #6bb370; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
+              <h4 style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Software</h4>
+              <p style="color:#47805c;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Photoshop · Dimension · Illustrator</p>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Right Column - Image -->
+      <div class="right-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;position:relative;">
+        
+        <!-- Atún Image -->
+        <div class="image-container" style="width:100%;height:100%;display:flex;align-items:flex-start;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
+          <img 
+            src="img/MOCKUP_ATUN_02.webp"
+            alt="Premium Tuna Can Mockup"
+            style="width:100%;height:650px;object-fit:cover;display:block;border-radius:8px;">
+        </div>
+        
+      </div>
+      
+    </div>
+    
   </div>
-  <span id="dragme-bubble" class="img-drag-bubble">DRAG ME</span>
-  <div id="egg-cursor"></div>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
-  <script src="script.js"></script>
+  
+  <!-- Sección de parallax del video -->
+  <section id="video-section" style="min-height:500vh;background:#a8d4c8;padding-bottom:4rem;">
+    <div class="video__content">
+      <figure class="video-figure">
+        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" loop muted playsinline></video>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer style="position: relative; background: linear-gradient(135deg, #1a1512 0%, #2a1f15 50%, #1a1512 100%); overflow: hidden; padding: 0;">
+    
+    <!-- Sección principal creativa -->
+    <div style="position: relative; background: linear-gradient(135deg, #3a3530 0%, #4a4238 100%); padding: 4rem 0; overflow: hidden;">
+      
+      <div style="max-width: 1400px; margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center;">
+        
+        <!-- Contenido principal -->
+        <div style="z-index: 2;">
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: #d4c4a8; margin: 0 0 1rem 0; line-height: 1.1; letter-spacing: -0.01em;">¿Trabajamos juntos?</h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: rgba(212, 196, 168, 0.8); margin: 0 0 2rem 0; line-height: 1.5; font-weight: 300; max-width: 420px;">Siempre estoy abierto a nuevos proyectos creativos y colaboraciones interesantes.</p>
+          
+          <!-- Botón call-to-action -->
+          <a href="mailto:cesardelvallefuentes@gmail.com" class="cta-button-subtle email-link" style="display: inline-flex; align-items: center; gap: 0.6rem; background: #d4c4a8; color: #2a1f15; padding: 0.9rem 2rem; border-radius: 25px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.01em; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;" onclick="window.location.href='mailto:cesardelvallefuentes@gmail.com';">
+            <span style="z-index: 2;">Contactar</span>
+            <span style="z-index: 2; font-size: 1rem;">→</span>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Sección inferior del footer -->
+    <div style="background: #2a1f15; padding: 2.5rem 5vw 1.5rem 5vw; position: relative;">
+      
+      <div style="max-width: 1400px; margin: 0 auto;">
+        
+        <!-- Grid de información -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2rem;">
+          
+          <!-- Información personal -->
+          <div>
+            <h3 style="color: #d4c4a8; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.8rem 0; letter-spacing: 0.02em;">Cesar Del Valle</h3>
+            <p style="color: rgba(212, 196, 168, 0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; line-height: 1.5; margin: 0 0 1.2rem 0;">Creative Director & 3D Artist especializado en experiencias audiovisuales.</p>
+          </div>
+          
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(212, 196, 168, 0.1);">
+          <p style="color: rgba(212, 196, 168, 0.6); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 300; margin: 0;">© 2024 Cesar Del Valle. Todos los derechos reservados.</p>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
   <script>
+    // Función para manejar el click en "home"
     document.getElementById('home-link').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = 'index.html';
     });
+
+    // GSAP ScrollTrigger para el video parallax
+    gsap.registerPlugin(ScrollTrigger);
+
+    const video = document.querySelector("#kaleo-video");
+    
+    gsap.to(video, {
+      scale: 1.2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#video-section",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        onUpdate: self => {
+          const progress = self.progress;
+          if (video) {
+            try {
+              video.currentTime = video.duration * progress;
+            } catch(e) {
+              console.log('Error updating video time:', e);
+            }
+          }
+        }
+      }
+    });
+
+    // Animaciones de scroll para los elementos de detalle
+    const scrollItems = document.querySelectorAll('.scroll-item');
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 150);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    scrollItems.forEach(item => {
+      scrollObserver.observe(item);
+    });
   </script>
+
+  <div id="egg-cursor"></div>
+  <script src="script.js"></script>
 </body>
 </html>
