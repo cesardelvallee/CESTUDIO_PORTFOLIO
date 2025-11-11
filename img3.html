@@ -172,7 +172,7 @@
         </div>
 
         <!-- Main Title -->
-        <h1 class="main-title" style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(3.8rem,7.5vw,6.5rem);font-weight:800;line-height:0.82;letter-spacing:-0.04em;margin:0 0 2rem 0; opacity:0; animation:fadeInUp 0.95s ease-out 0.6s forwards; text-shadow:0 2px 8px rgba(31,74,61,0.1);">ATÚN<br><span style="font-weight:200;font-style:italic;color:#47805c;">Premium Mockup</span></h1>
+        <h1 class="main-title" style="color:#1f4a3d;font-family:'Inter',sans-serif;font-size:clamp(3.8rem,7.5vw,6.5rem);font-weight:800;line-height:0.82;letter-spacing:-0.04em;margin:0 0 2rem 0; opacity:0; animation:fadeInUp 0.95s ease-out 0.6s forwards; text-shadow:0 2px 8px rgba(31,74,61,0.1);">Packaging<br><span style="font-weight:200;font-style:italic;color:#47805c;">CATALALATA</span></h1>
 
         <!-- Description -->
         <p class="project-description" style="color:#2d5247;font-family:'Inter',sans-serif;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.6;font-weight:300;margin:0 0 3.5rem 0;max-width:520px; opacity:0; animation:fadeInUp 0.9s ease-out 0.75s forwards;">Diseño de mockup profesional para <strong style="font-weight:500;color:#1f4a3d;">latas de atún premium</strong>. Presentación fotorrealista que destaca la calidad del producto con <em style="color:#47805c;">iluminación y composición</em> cuidadosamente diseñadas para impacto comercial.</p>
@@ -217,7 +217,7 @@
           <img 
             src="img/MOCKUP_ATUN_02.webp"
             alt="Premium Tuna Can Mockup"
-            style="width:100%;height:650px;object-fit:cover;display:block;border-radius:8px;">
+            style="width:100%;height:650px;object-fit:cover;display:block;border-radius:8px;filter: saturate(0.85) contrast(0.95);">
         </div>
         
       </div>
@@ -226,12 +226,32 @@
     
   </div>
   
-  <!-- Sección de parallax del video -->
-  <section id="video-section" style="min-height:500vh;background:#a8d4c8;padding-bottom:4rem;">
-    <div class="video__content">
-      <figure class="video-figure">
-        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" loop muted playsinline></video>
-      </figure>
+  <!-- Sección de imágenes con efecto pinned como Loewe -->
+  <section id="pinned-images-section" style="min-height: 400vh; background: #a8d4c8;">
+    
+    <!-- Container pinned -->
+    <div class="pinned-container" style="position: sticky; top: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
+      
+      <!-- Stack de imágenes centrado -->
+      <div class="images-center" style="position: relative; width: 100%; height: 60%; display: flex; align-items: center; justify-content: center;">
+        
+        <!-- Imagen 1 - Atún (base, abajo) -->
+        <div class="pinned-image" data-index="0" style="position: absolute; width: 70%; max-width: 600px; height: 400px; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px rgba(31,74,61,0.4); transform: translateY(100vh) rotate(-8deg); opacity: 0; z-index: 1;">
+          <img src="img/CATALALATA_ATUN.svg" alt="Catalalata Atún" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(0.95);">
+        </div>
+
+        <!-- Imagen 2 - Mejillón (medio) -->
+        <div class="pinned-image" data-index="1" style="position: absolute; width: 70%; max-width: 600px; height: 400px; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px rgba(31,74,61,0.4); transform: translateY(100vh) rotate(4deg); opacity: 0; z-index: 2;">
+          <img src="img/CATALALATA_MEJILLON.svg" alt="Catalalata Mejillón" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(0.95);">
+        </div>
+
+        <!-- Imagen 3 - Sardinillas (arriba, encima) -->
+        <div class="pinned-image" data-index="2" style="position: absolute; width: 70%; max-width: 600px; height: 400px; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px rgba(31,74,61,0.4); transform: translateY(100vh) rotate(-12deg); opacity: 0; z-index: 3;">
+          <img src="img/CATALALATA_SARDINILLAS.svg" alt="Catalalata Sardinillas" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(0.95);">
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -290,31 +310,8 @@
       window.location.href = 'index.html';
     });
 
-    // GSAP ScrollTrigger para el video parallax
+    // GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
-
-    const video = document.querySelector("#kaleo-video");
-    
-    gsap.to(video, {
-      scale: 1.2,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#video-section",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-        onUpdate: self => {
-          const progress = self.progress;
-          if (video) {
-            try {
-              video.currentTime = video.duration * progress;
-            } catch(e) {
-              console.log('Error updating video time:', e);
-            }
-          }
-        }
-      }
-    });
 
     // Animaciones de scroll para los elementos de detalle
     const scrollItems = document.querySelectorAll('.scroll-item');
@@ -334,6 +331,85 @@
     
     scrollItems.forEach(item => {
       scrollObserver.observe(item);
+    });
+
+    // Efecto Pinned como el video de Loewe
+    const pinnedImages = document.querySelectorAll('.pinned-image');
+    const pinnedSection = document.querySelector('#pinned-images-section');
+
+    // Pin toda la sección como el video de Loewe
+    ScrollTrigger.create({
+      trigger: pinnedSection,
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".pinned-container",
+      pinSpacing: false,
+      onUpdate: self => {
+        const progress = self.progress;
+        const totalImages = pinnedImages.length;
+        
+        pinnedImages.forEach((image, index) => {
+          // Cada imagen aparece en un momento específico del scroll
+          const imageStart = index / totalImages;
+          const imageEnd = (index + 1) / totalImages;
+          
+          // Definir rotaciones más suaves para cada imagen
+          const rotations = [-3, 2, -4];
+          const baseRotation = rotations[index] || 0;
+          
+          if (progress >= imageStart && progress <= imageEnd) {
+            // Imagen está apareciendo con retraso y fluidez
+            const imageProgress = (progress - imageStart) / (imageEnd - imageStart);
+            const easedProgress = gsap.utils.interpolate(0, 1, imageProgress, 0.3); // Ease más suave
+            const offsetY = index * -8; // Separación más sutil
+            
+            gsap.to(image, {
+              y: (1 - easedProgress) * 100 + "vh",
+              scale: 0.8 + (easedProgress * 0.2),
+              opacity: easedProgress,
+              rotation: baseRotation + (1 - easedProgress) * 8, // Rotación más sutil
+              transformOrigin: "center center",
+              duration: 0.6,
+              ease: "power2.out"
+            });
+            
+            // Una vez completamente arriba, se posiciona con offset y rotación final
+            if (imageProgress >= 0.85) {
+              gsap.to(image, {
+                y: offsetY,
+                scale: 1,
+                opacity: 1,
+                rotation: baseRotation,
+                duration: 0.4,
+                ease: "power2.out"
+              });
+            }
+            
+          } else if (progress > imageEnd) {
+            // Imagen ya completamente visible y apilada
+            const offsetY = index * -8;
+            gsap.to(image, {
+              y: offsetY,
+              scale: 1,
+              opacity: 1,
+              rotation: baseRotation,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+            
+          } else {
+            // Imagen aún no visible
+            gsap.to(image, {
+              y: "100vh",
+              scale: 0.8,
+              opacity: 0,
+              rotation: baseRotation + 8,
+              duration: 0.2,
+              ease: "power2.out"
+            });
+          }
+        });
+      }
     });
   </script>
 

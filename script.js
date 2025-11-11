@@ -1,4 +1,4 @@
-// ===== HERO / INTERACTIONS =====
+// HERO/INTERACTIONS
 document.addEventListener('DOMContentLoaded', () => {
   const topBarLeft = document.querySelector('.top-bar-left');
   if (topBarLeft) {
@@ -214,7 +214,7 @@ window.addEventListener('DOMContentLoaded', function() {
   if (btn && btnText) { btn.addEventListener('mouseenter', function() { btnText.classList.remove('hover-animate'); void btnText.offsetWidth; btnText.classList.add('hover-animate'); }); btn.addEventListener('mouseleave', function() { btnText.classList.remove('hover-animate'); }); }
 })();
 
-// ====== PANTALLA DE CARGA ======
+// PANTALLA DE CARGA
 (function() {
   function initializeLoading() {
     const loadingScreen = document.getElementById('loading-screen'); const loadingProgress = document.getElementById('loading-progress'); const loadingText = document.getElementById('loading-text');
@@ -249,7 +249,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {});
 
-// ===== SISTEMA DE CAMBIO DE FONDOS DINÁMICOS =====
+// SISTEMA DE CAMBIO DE FONDOS DINÁMICOS
 (function() {
   let currentBackgroundType = 'default'; let currentVanta = null;
   const backgroundConfigs = [ { name: 'floating-orbs', init: () => createFloatingOrbsBackground() }, { name: 'geometric-waves', init: () => createGeometricWavesBackground() }, { name: 'neural-network', init: () => createNeuralNetworkBackground() }, { name: 'cosmic-dust', init: () => createCosmicDustBackground() }, { name: 'particles', init: () => createParticleBackground() }, { name: 'gradient', init: () => createGradientBackground() }, { name: 'matrix', init: () => createMatrixBackground() }, { name: 'aurora', init: () => createAuroraBackground() } ];
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {});
   })();
 })();
 
-// ===== REPRODUCTOR MUSICAL WIDGET =====
+// REPRODUCTOR MUSICAL WIDGET
 (function() {
   const musicDatabase = {
     'rock-ingles': { title: 'I Still Haven\'t Found What I\'m Looking For', artist: 'U2', src: 'music/U2 - I Still Haven\'t Found What I\'m Looking For (Official Music Video).mp3' },
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {});
   document.addEventListener('DOMContentLoaded', () => { setTimeout(initPlayer, 500); });
 })();
 
-// ===== ABOUT PAGE - EXQUISITE ANIMATIONS =====
+// ABOUT PAGE ANIMATIONS
 document.addEventListener('DOMContentLoaded', () => {
   if (!document.body.classList.contains('about-page')) return;
   function elegantAnimations() { const elements = [ { selector: '.elegant-title', delay: 0 }, { selector: '.title-accent', delay: 200 }, { selector: '.name-elegant', delay: 400 }, { selector: '.role-elegant', delay: 500 }, { selector: '.description-elegant', delay: 600 }, { selector: '.visual-element', delay: 300 }, { selector: '.section-title-elegant', delay: 800 }, { selector: '.section-line', delay: 900 }, { selector: '.skill-block', delay: 1000 }, { selector: '.info-grid-elegant', delay: 1200 } ]; elements.forEach(({ selector, delay }) => { const els = document.querySelectorAll(selector); els.forEach((el, index) => { el.style.opacity = '0'; el.style.transform = 'translateY(40px)'; el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay + (index * 100)); }); }); }
