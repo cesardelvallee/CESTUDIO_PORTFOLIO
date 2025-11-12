@@ -227,7 +227,7 @@
   </div>
   
   <!-- Sección de imágenes con efecto pinned como Loewe -->
-  <section id="pinned-images-section" style="min-height: 400vh; background: #a8d4c8;">
+  <section id="pinned-images-section" style="min-height: 500vh; background: #a8d4c8;">
     
     <!-- Container pinned -->
     <div class="pinned-container" style="position: sticky; top: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
@@ -256,30 +256,63 @@
   </section>
 
   <!-- Pie de página -->
-  <footer style="position: relative; background: linear-gradient(135deg, #1a1512 0%, #2a1f15 50%, #1a1512 100%); overflow: hidden; padding: 0;">
+  <footer style="position: relative; background: linear-gradient(135deg, #1a1b1f 0%, #252830 50%, #1a1b1f 100%); overflow: hidden; padding: 0;">
     
     <!-- Sección principal creativa -->
-    <div style="position: relative; background: linear-gradient(135deg, #3a3530 0%, #4a4238 100%); padding: 4rem 0; overflow: hidden;">
+    <div style="position: relative; background: linear-gradient(135deg, #3a4045 0%, #4a4f55 100%); padding: 4rem 0; overflow: hidden;">
+      
+      <!-- Formas geométricas sutiles -->
+      <div style="position: absolute; top: -10%; left: -5%; width: 120px; height: 120px; background: rgba(135, 206, 235, 0.08); border-radius: 50%; transform: rotate(45deg);"></div>
+      <div style="position: absolute; bottom: -8%; right: -3%; width: 90px; height: 90px; background: rgba(25, 30, 35, 0.3); border-radius: 15px; transform: rotate(-20deg);"></div>
+      <div style="position: absolute; top: 40%; right: 8%; width: 40px; height: 40px; background: rgba(135, 206, 235, 0.1); border-radius: 50%; animation: float-subtle 8s ease-in-out infinite;"></div>
+      
+      <!-- Elementos flotantes discretos -->
+      <div style="position: absolute; top: 25%; left: 15%; width: 6px; height: 6px; background: rgba(135, 206, 235, 0.4); border-radius: 50%; animation: float-dot-subtle 5s ease-in-out infinite;"></div>
+      <div style="position: absolute; top: 70%; left: 12%; width: 4px; height: 4px; background: rgba(135, 206, 235, 0.3); border-radius: 50%; animation: float-dot-subtle 4s ease-in-out infinite reverse;"></div>
+      <div style="position: absolute; bottom: 30%; right: 20%; width: 5px; height: 5px; background: rgba(135, 206, 235, 0.2); border-radius: 50%; animation: float-dot-subtle 6s ease-in-out infinite;"></div>
       
       <div style="max-width: 1400px; margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center;">
         
         <!-- Contenido principal -->
         <div style="z-index: 2;">
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: #d4c4a8; margin: 0 0 1rem 0; line-height: 1.1; letter-spacing: -0.01em;">¿Trabajamos juntos?</h2>
-          <p style="font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: rgba(212, 196, 168, 0.8); margin: 0 0 2rem 0; line-height: 1.5; font-weight: 300; max-width: 420px;">Siempre estoy abierto a nuevos proyectos creativos y colaboraciones interesantes.</p>
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: #87ceeb; margin: 0 0 1rem 0; line-height: 1.1; letter-spacing: -0.01em;">¿Trabajamos juntos?</h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: rgba(135, 206, 235, 0.9); margin: 0 0 2rem 0; line-height: 1.5; font-weight: 300; max-width: 420px;">Siempre estoy abierto a nuevos proyectos creativos y colaboraciones interesantes.</p>
           
           <!-- Botón call-to-action -->
-          <a href="mailto:cesardelvallefuentes@gmail.com" class="cta-button-subtle email-link" style="display: inline-flex; align-items: center; gap: 0.6rem; background: #d4c4a8; color: #2a1f15; padding: 0.9rem 2rem; border-radius: 25px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.01em; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;" onclick="window.location.href='mailto:cesardelvallefuentes@gmail.com';">
+          <a href="mailto:cesardelvallefuentes@gmail.com" class="cta-button-subtle email-link" style="display: inline-flex; align-items: center; gap: 0.6rem; background: #87ceeb; color: #1a1b1f; padding: 0.9rem 2rem; border-radius: 25px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.01em; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;" onclick="window.location.href='mailto:cesardelvallefuentes@gmail.com';">
             <span style="z-index: 2;">Contactar</span>
             <span style="z-index: 2; font-size: 1rem;">→</span>
           </a>
+        </div>
+
+        <!-- Ilustración sutil -->
+        <div style="position: relative; width: 200px; height: 200px; z-index: 1;">
+          
+          <!-- Figura principal -->
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130px; height: 130px; background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(135, 206, 235, 0.1) 100%); border-radius: 50% 25% 50% 25%; animation: morph-subtle 12s ease-in-out infinite; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);"></div>
+          
+          <!-- Elementos decorativos en la figura -->
+          <div style="position: absolute; top: 40%; left: 45%; width: 12px; height: 12px; background: rgba(135, 206, 235, 0.6); border-radius: 50%; animation: bounce-subtle 4s ease-in-out infinite;"></div>
+          <div style="position: absolute; top: 65%; left: 60%; width: 8px; height: 8px; background: rgba(135, 206, 235, 0.4); border-radius: 50%; animation: bounce-subtle 3.5s ease-in-out infinite reverse;"></div>
+          
+          <!-- Formas externas -->
+          <div style="position: absolute; top: 15%; right: 25%; width: 18px; height: 18px; background: rgba(135, 206, 235, 0.3); border-radius: 50%; animation: orbit-subtle 10s linear infinite;"></div>
+          <div style="position: absolute; bottom: 20%; left: 15%; width: 15px; height: 15px; background: rgba(135, 206, 235, 0.2); transform: rotate(45deg); animation: float-subtle 6s ease-in-out infinite reverse;"></div>
+          
+          <!-- Líneas conectoras discretas -->
+          <div style="position: absolute; top: 35%; left: 25%; width: 35px; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(135, 206, 235, 0.3) 50%, transparent 100%); transform: rotate(30deg); animation: pulse-line-subtle 4s ease-in-out infinite;"></div>
+          <div style="position: absolute; bottom: 45%; right: 20%; width: 28px; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(135, 206, 235, 0.2) 50%, transparent 100%); transform: rotate(-20deg); animation: pulse-line-subtle 3.5s ease-in-out infinite reverse;"></div>
+          
         </div>
         
       </div>
     </div>
 
     <!-- Sección inferior del footer -->
-    <div style="background: #2a1f15; padding: 2.5rem 5vw 1.5rem 5vw; position: relative;">
+    <div style="background: #252830; padding: 2.5rem 5vw 1.5rem 5vw; position: relative;">
+      
+      <!-- Línea divisoria superior -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(135, 206, 235, 0.2) 25%, rgba(135, 206, 235, 0.4) 50%, rgba(135, 206, 235, 0.2) 75%, transparent 100%);"></div>
       
       <div style="max-width: 1400px; margin: 0 auto;">
         
@@ -288,17 +321,74 @@
           
           <!-- Información personal -->
           <div>
-            <h3 style="color: #d4c4a8; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.8rem 0; letter-spacing: 0.02em;">Cesar Del Valle</h3>
-            <p style="color: rgba(212, 196, 168, 0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; line-height: 1.5; margin: 0 0 1.2rem 0;">Creative Director & 3D Artist especializado en experiencias audiovisuales.</p>
+            <h3 style="color: #87ceeb; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.8rem 0; letter-spacing: 0.02em;">Cesar Del Valle</h3>
+            <p style="color: rgba(135, 206, 235, 0.9); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; line-height: 1.5; margin: 0 0 1.2rem 0;">Creative Director & 3D Artist especializado en experiencias audiovisuales.</p>
+            
+            <!-- Enlaces sociales -->
+            <div style="display: flex; gap: 0.8rem;">
+              <a href="mailto:cesardelvallefuentes@gmail.com" class="social-subtle" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(135, 206, 235, 0.1); border: 1px solid rgba(135, 206, 235, 0.2); border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgba(135, 206, 235, 0.9);">
+                  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/cesar-del-valle-fuentes-518834275" target="_blank" class="social-subtle" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(135, 206, 235, 0.1); border: 1px solid rgba(135, 206, 235, 0.2); border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgba(135, 206, 235, 0.9);">
+                  <path d="M16 8A6 6 0 0 1 22 14V21H18V14A2 2 0 0 0 16 12A2 2 0 0 0 14 14V21H10V14A6 6 0 0 1 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/cesardelvallee/" target="_blank" class="social-subtle" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(135, 206, 235, 0.1); border: 1px solid rgba(135, 206, 235, 0.2); border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgba(135, 206, 235, 0.9);">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Navegación -->
+          <div>
+            <h4 style="color: #87ceeb; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; margin: 0 0 1rem 0; letter-spacing: 0.02em;">Navegación</h4>
+            <nav style="display: flex; flex-direction: column; gap: 0.6rem;">
+              <a href="index.html" class="footer-link-subtle" style="color: rgba(135, 206, 235, 0.8); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.01em; transition: all 0.3s ease; position: relative; display: inline-block; width: fit-content;">Portfolio</a>
+              <a href="about.html" class="footer-link-subtle" style="color: rgba(135, 206, 235, 0.8); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.01em; transition: all 0.3s ease; position: relative; display: inline-block; width: fit-content;">Sobre mí</a>
+              <a href="mailto:cesardelvallefuentes@gmail.com" class="footer-link-subtle" style="color: rgba(135, 206, 235, 0.8); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.01em; transition: all 0.3s ease; position: relative; display: inline-block; width: fit-content;">Contacto</a>
+            </nav>
+          </div>
+
+          <!-- Servicios -->
+          <div>
+            <h4 style="color: #87ceeb; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; margin: 0 0 1rem 0; letter-spacing: 0.02em;">Especialidades</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li style="color: rgba(135, 206, 235, 0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; position: relative; padding-left: 1rem;">
+                <span style="position: absolute; left: 0; top: 0.1rem; color: rgba(135, 206, 235, 0.6);">•</span>
+                Diseño 3D & Motion
+              </li>
+              <li style="color: rgba(135, 206, 235, 0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; position: relative; padding-left: 1rem;">
+                <span style="position: absolute; left: 0; top: 0.1rem; color: rgba(135, 206, 235, 0.6);">•</span>
+                Spots audiovisuales
+              </li>
+              <li style="color: rgba(135, 206, 235, 0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; position: relative; padding-left: 1rem;">
+                <span style="position: absolute; left: 0; top: 0.1rem; color: rgba(135, 206, 235, 0.6);">•</span>
+                Experiencias digitales
+              </li>
+            </ul>
           </div>
           
         </div>
-        
-        <!-- Copyright -->
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(212, 196, 168, 0.1);">
-          <p style="color: rgba(212, 196, 168, 0.6); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 300; margin: 0;">© 2024 Cesar Del Valle. Todos los derechos reservados.</p>
+
+        <!-- Copyright sutil -->
+        <div style="border-top: 1px solid rgba(135, 206, 235, 0.15); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 5px; height: 5px; background: rgba(135, 206, 235, 0.5); border-radius: 50%; animation: pulse-gentle 3s ease-in-out infinite;"></div>
+            <p style="color: rgba(135, 206, 235, 0.7); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 300; margin: 0; letter-spacing: 0.01em;">© 2025 Cesar Del Valle</p>
+          </div>
+          <p style="color: rgba(135, 206, 235, 0.7); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 300; margin: 0; letter-spacing: 0.01em;">Diseñado desde España</p>
         </div>
-        
+
       </div>
     </div>
   </footer>
@@ -312,6 +402,39 @@
 
     // GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
+
+    // Configuración global para mayor estabilidad
+    gsap.config({
+      nullTargetWarn: false,
+      force3D: true
+    });
+
+    // Variables para inercia suave
+    let scrollVelocity = 0;
+    let lastScrollY = 0;
+    let smoothVelocity = 0;
+    let scrollDirection = 1; // 1 = down, -1 = up
+
+    // Detectar velocidad y dirección de scroll con suavizado
+    function updateScrollVelocity() {
+      const currentScrollY = window.scrollY;
+      const deltaY = currentScrollY - lastScrollY;
+      
+      scrollVelocity = deltaY * 0.05; // Mucho más suave
+      scrollDirection = deltaY >= 0 ? 1 : -1; // Detectar dirección
+      lastScrollY = currentScrollY;
+      
+      // Suavizar la velocidad para evitar temblores
+      smoothVelocity = gsap.utils.interpolate(smoothVelocity, scrollVelocity, 0.1);
+      
+      // Aplicar fricción gradual
+      if (Math.abs(smoothVelocity) < 0.01) {
+        smoothVelocity *= 0.95;
+      }
+      
+      requestAnimationFrame(updateScrollVelocity);
+    }
+    updateScrollVelocity();
 
     // Animaciones de scroll para los elementos de detalle
     const scrollItems = document.querySelectorAll('.scroll-item');
@@ -333,79 +456,111 @@
       scrollObserver.observe(item);
     });
 
-    // Efecto Pinned como el video de Loewe
+    // Efecto Pinned suave y estable
     const pinnedImages = document.querySelectorAll('.pinned-image');
     const pinnedSection = document.querySelector('#pinned-images-section');
 
-    // Pin toda la sección como el video de Loewe
+    // Pin toda la sección con fluidez controlada
     ScrollTrigger.create({
       trigger: pinnedSection,
       start: "top top",
       end: "bottom bottom",
       pin: ".pinned-container",
       pinSpacing: false,
+      scrub: 1, // Más suave, menos nervioso
       onUpdate: self => {
         const progress = self.progress;
         const totalImages = pinnedImages.length;
         
         pinnedImages.forEach((image, index) => {
           // Cada imagen aparece en un momento específico del scroll
-          const imageStart = index / totalImages;
-          const imageEnd = (index + 1) / totalImages;
+          // Ajustar los rangos para que ocupen solo el 80% del scroll total
+          const totalScrollRange = 0.8; // 80% del scroll para las animaciones
+          const imageStart = (index / totalImages) * totalScrollRange;
+          const imageEnd = ((index + 1) / totalImages) * totalScrollRange;
           
           // Definir rotaciones más suaves para cada imagen
           const rotations = [-3, 2, -4];
           const baseRotation = rotations[index] || 0;
           
-          if (progress >= imageStart && progress <= imageEnd) {
-            // Imagen está apareciendo con retraso y fluidez
-            const imageProgress = (progress - imageStart) / (imageEnd - imageStart);
-            const easedProgress = gsap.utils.interpolate(0, 1, imageProgress, 0.3); // Ease más suave
-            const offsetY = index * -8; // Separación más sutil
+          // Inercia muy sutil para evitar temblores
+          const inertiaOffset = smoothVelocity * 3; // Reducido drásticamente
+          
+          // Solo animar si estamos en el rango de animación (0-80%)
+          if (progress <= totalScrollRange) {
             
-            gsap.to(image, {
-              y: (1 - easedProgress) * 100 + "vh",
-              scale: 0.8 + (easedProgress * 0.2),
-              opacity: easedProgress,
-              rotation: baseRotation + (1 - easedProgress) * 8, // Rotación más sutil
-              transformOrigin: "center center",
-              duration: 0.6,
-              ease: "power2.out"
-            });
-            
-            // Una vez completamente arriba, se posiciona con offset y rotación final
-            if (imageProgress >= 0.85) {
+            if (progress >= imageStart && progress <= imageEnd) {
+              // Imagen está apareciendo con suavidad controlada
+              const imageProgress = (progress - imageStart) / (imageEnd - imageStart);
+              // Easing suave sin brusquedad
+              const easedProgress = gsap.utils.interpolate(0, 1, imageProgress);
+              const offsetY = index * -8;
+              
+              // Ajustar duración según dirección de scroll
+              const duration = scrollDirection === -1 ? 0.2 : 0.3; // Más rápido al subir
+              
+              gsap.to(image, {
+                y: (1 - easedProgress) * 100 + "vh",
+                x: inertiaOffset * 0.1, // Inercia muy sutil
+                scale: 0.8 + (easedProgress * 0.2),
+                opacity: 1, // Opacidad completa siempre
+                rotation: baseRotation + (1 - easedProgress) * 8,
+                transformOrigin: "center center",
+                duration: duration,
+                ease: scrollDirection === -1 ? "power1.in" : "power1.out" // Easing según dirección
+              });
+              
+              // Una vez completamente arriba
+              if (imageProgress >= 0.85) {
+                gsap.to(image, {
+                  y: offsetY,
+                  x: 0, // Sin inercia en posición final
+                  scale: 1,
+                  opacity: 1, // Opacidad completa
+                  rotation: baseRotation,
+                  duration: scrollDirection === -1 ? 0.25 : 0.4,
+                  ease: scrollDirection === -1 ? "power1.in" : "power1.out"
+                });
+              }
+              
+            } else if (progress > imageEnd) {
+              // Imagen ya completamente visible y estable
+              const offsetY = index * -8;
               gsap.to(image, {
                 y: offsetY,
+                x: 0, // Posición estable sin temblores
                 scale: 1,
-                opacity: 1,
+                opacity: 1, // Opacidad completa
                 rotation: baseRotation,
-                duration: 0.4,
-                ease: "power2.out"
+                duration: scrollDirection === -1 ? 0.3 : 0.5,
+                ease: scrollDirection === -1 ? "power1.in" : "power1.out"
+              });
+              
+            } else {
+              // Imagen aún no visible - mantener invisible
+              const duration = scrollDirection === -1 ? 0.15 : 0.3; // Desaparición más rápida al subir
+              gsap.to(image, {
+                y: "100vh",
+                x: 0,
+                scale: 0.8,
+                opacity: 0, // Solo invisible cuando no debe aparecer
+                rotation: baseRotation + 8,
+                duration: duration,
+                ease: scrollDirection === -1 ? "power2.in" : "power1.out" // Desaparición más dramática al subir
               });
             }
             
-          } else if (progress > imageEnd) {
-            // Imagen ya completamente visible y apilada
+          } else {
+            // Después del 80%, todas las imágenes están en posición final y estables
             const offsetY = index * -8;
             gsap.to(image, {
               y: offsetY,
+              x: 0,
               scale: 1,
               opacity: 1,
               rotation: baseRotation,
-              duration: 0.3,
-              ease: "power2.out"
-            });
-            
-          } else {
-            // Imagen aún no visible
-            gsap.to(image, {
-              y: "100vh",
-              scale: 0.8,
-              opacity: 0,
-              rotation: baseRotation + 8,
               duration: 0.2,
-              ease: "power2.out"
+              ease: "power1.out"
             });
           }
         });

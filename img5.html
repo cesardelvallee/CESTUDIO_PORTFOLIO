@@ -587,7 +587,7 @@
         const pinTrigger = ScrollTrigger.create({
           trigger: "#video-section",
           start: "top top",
-          end: "+=400%", // Pin solo durante la animación
+          end: "bottom bottom", // Extender hasta el final de la sección
           pin: ".video-figure",
           pinSpacing: false
         });
@@ -603,12 +603,8 @@
             scrollTrigger: {
               trigger: "#video-section",
               start: "top top",
-              end: "+=400%",
-              scrub: 1.5, // Reducido de 3 a 1.5 para animación más rápida
-              onComplete: () => {
-                // Cuando termine la animación, matar el pin para permitir scroll
-                pinTrigger.kill();
-              }
+              end: "+=350%", // La animación termina antes del final
+              scrub: 1.5 // Mantener la velocidad original
             }
           }
         );
