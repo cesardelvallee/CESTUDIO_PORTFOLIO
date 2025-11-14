@@ -683,7 +683,7 @@
       }
     });
     
-    // Fine-tuned timing - slightly later for perfect sync
+    // Simple and reliable timing system
     document.addEventListener('DOMContentLoaded', function() {
       const images = [
         'img/MOCKUP_ATUN_02.webp',
@@ -699,22 +699,18 @@
       frontImg.src = images[0];
       backImg.src = images[0];
       
-      function instantChange() {
+      function changeImage() {
         currentIndex = (currentIndex + 1) % images.length;
         frontImg.src = images[currentIndex];
         backImg.src = images[currentIndex];
       }
       
-      // Fine-tuned timing - just a bit later
-      setInterval(() => {
-        // Change at 23.5% of cycle (1410ms)
-        setTimeout(instantChange, 1410);
-        // Change at 73.5% of cycle (4410ms)  
-        setTimeout(instantChange, 4410);
-      }, 6000);
-      
-      // First change at 1.41s
-      setTimeout(instantChange, 1410);
+      // Balanced timing: change every 3 seconds for perfect pace
+      // Good balance between visibility and dynamism
+      setTimeout(() => {
+        changeImage(); // First change at 1.41s
+        setInterval(changeImage, 3000); // Then every 3 seconds
+      }, 1410);
     });
   </script>
 
