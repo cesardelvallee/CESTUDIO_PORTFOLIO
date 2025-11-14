@@ -11,6 +11,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module">
+    import { animate, scroll } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+    const items = document.querySelectorAll(".img-container")
+
+    // Animate gallery horizontally during vertical scroll
+    scroll(
+        animate(".img-group", {
+            transform: ["none", `translateX(-${items.length - 1}00vw)`],
+        }),
+        { target: document.querySelector(".img-group-container") }
+    )
+
+    // Progress bar representing gallery scroll
+    scroll(animate(".progress", { scaleX: [0, 1] }), {
+        target: document.querySelector(".img-group-container"),
+    })
+  </script>
   
   <style>
     @keyframes rotate {
@@ -147,6 +165,96 @@
         margin-bottom: 2rem !important;
       }
     }
+
+    /* Estilos para la galería horizontal */
+    #gallery {
+      width: 100vw;
+    }
+
+    #gallery h2 {
+      font-family: "Inter", sans-serif;
+    }
+
+    #gallery h3 {
+      font-family: "Inter", monospace;
+    }
+
+    #gallery header,
+    #gallery footer {
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-group-container {
+      height: 500vh;
+      position: relative;
+    }
+
+    .img-group-container > div {
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .img-group {
+      display: flex;
+    }
+
+    .img-container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: #1a3d5c;
+      bottom: 50px;
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: 100;
+    }
+
+    /* Responsive para la galería */
+    @media (max-width: 768px) {
+      .img-container img {
+        width: 300px !important;
+        height: 375px !important;
+      }
+      
+      #gallery header h2 {
+        font-size: clamp(2.5rem, 10vw, 4rem) !important;
+      }
+      
+      .img-container h3 {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .img-container img {
+        width: 250px !important;
+        height: 320px !important;
+      }
+      
+      #gallery header h2 {
+        font-size: clamp(2rem, 12vw, 3rem) !important;
+      }
+      
+      .img-container h3 {
+        font-size: clamp(1.5rem, 10vw, 2.5rem) !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -226,14 +334,39 @@
     
   </div>
   
-  <!-- Sección de parallax del video -->
-  <section id="video-section" style="min-height:500vh;background:#b8d4eb;padding-bottom:4rem;">
-    <div class="video__content">
-      <figure class="video-figure">
-        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-84c7-48afe0a13b33.mp4" loop muted playsinline></video>
-      </figure>
-    </div>
-  </section>
+  <!-- Sección de galería horizontal -->
+  <article id="gallery" style="width:100vw;background:#b8d4eb;">
+    <header style="height:70vh;display:flex;justify-content:center;align-items:center;">
+      <h2 style="font-size:clamp(3rem,8vw,5.5rem);font-weight:700;letter-spacing:-3px;line-height:1.2;text-align:center;margin:0;color:#1a3d5c;font-family:'Inter',sans-serif;">CAFÉ PREMIUM</h2>
+    </header>
+    
+    <section class="img-group-container" style="height:500vh;position:relative;">
+      <div style="position:sticky;top:0;overflow:hidden;height:100vh;">
+        <ul class="img-group" style="display:flex;list-style:none;padding:0;margin:0;">
+          <li class="img-container" style="display:flex;width:100vw;height:100vh;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;">
+            <img src="img/CAFE_1.png" style="width:400px;height:500px;object-fit:cover;border-radius:15px;box-shadow:0 15px 35px rgba(26,61,92,0.2);" alt="Café Premium - Imagen 1" />
+            <h3 style="margin:0;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-3px;line-height:1.2;position:relative;bottom:30px;display:inline-block;color:#1a3d5c;font-family:'Inter',sans-serif;">#001</h3>
+          </li>
+          <li class="img-container" style="display:flex;width:100vw;height:100vh;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;">
+            <img src="img/CAFE_2.png" style="width:400px;height:500px;object-fit:cover;border-radius:15px;box-shadow:0 15px 35px rgba(26,61,92,0.2);" alt="Café Premium - Imagen 2" />
+            <h3 style="margin:0;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-3px;line-height:1.2;position:relative;bottom:30px;display:inline-block;color:#1a3d5c;font-family:'Inter',sans-serif;">#002</h3>
+          </li>
+          <li class="img-container" style="display:flex;width:100vw;height:100vh;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;">
+            <img src="img/CAFE_3.png" style="width:400px;height:500px;object-fit:cover;border-radius:15px;box-shadow:0 15px 35px rgba(26,61,92,0.2);" alt="Café Premium - Imagen 3" />
+            <h3 style="margin:0;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-3px;line-height:1.2;position:relative;bottom:30px;display:inline-block;color:#1a3d5c;font-family:'Inter',sans-serif;">#003</h3>
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+    <footer style="height:70vh;display:flex;justify-content:center;align-items:center;">
+      <p style="font-size:clamp(1.2rem,2.5vw,1.8rem);color:#4a7bb8;font-family:'Inter',sans-serif;font-weight:300;text-align:center;margin:0;">
+        Diseño de packaging creado por
+        <a target="_blank" href="mailto:cesardelvallefuentes@gmail.com" style="color:#1a3d5c;text-decoration:none;font-weight:500;border-bottom:2px solid #1a3d5c;padding-bottom:2px;">Cesar Del Valle</a>
+      </p>
+    </footer>
+  </article>
+  <div class="progress" style="position:fixed;left:0;right:0;height:5px;background:#1a3d5c;bottom:50px;transform:scaleX(0);transform-origin:left;"></div>
 
   <!-- Pie de página -->
   <footer style="position: relative; background: linear-gradient(135deg, #151a1f 0%, #1e252b 50%, #151a1f 100%); overflow: hidden; padding: 0;">
@@ -380,31 +513,8 @@
       window.location.href = 'index.html';
     });
 
-    // GSAP ScrollTrigger para el video parallax
+    // GSAP ScrollTrigger está manejado por Motion.js para la galería
     gsap.registerPlugin(ScrollTrigger);
-
-    const video = document.querySelector("#kaleo-video");
-    
-    gsap.to(video, {
-      scale: 1.2,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#video-section",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-        onUpdate: self => {
-          const progress = self.progress;
-          if (video) {
-            try {
-              video.currentTime = video.duration * progress;
-            } catch(e) {
-              console.log('Error updating video time:', e);
-            }
-          }
-        }
-      }
-    });
 
     // Animaciones de scroll para los elementos de detalle
     const scrollItems = document.querySelectorAll('.scroll-item');
