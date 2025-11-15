@@ -288,44 +288,33 @@
         <!-- Elemento visual separador -->
         <div style="width:80px;height:2px;background:linear-gradient(90deg, #1a3d5c 0%, transparent 100%);margin:0 0 3rem 0;opacity:0;animation:fadeInUp 0.8s ease-out 0.8s forwards;"></div>
 
-        <!-- Project Details - Con scroll reveal -->
-        <div class="scroll-reveal" style="margin-bottom:2rem;">
-          
-          <!-- Lista vertical simple -->
-          <div>
-            
-            <!-- Role -->
-            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #1a3d5c; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Role</h4>
-              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">3D Designer · Product Visualization · Creative Direction</p>
-            </div>
-            
-            <!-- Product -->
-            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #4a7bb8; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Product</h4>
-              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Lemon Candy Pack · Sweet Design</p>
-            </div>
-            
-            <!-- Software -->
-            <div class="scroll-item" style="border-left:3px solid #6ba3e3; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Software</h4>
-              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Cinema 4D · Octane Render · Photoshop</p>
-            </div>
-            
-          </div>
-        </div>
-        
       </div>
 
       <!-- Right Column - Image -->
       <div class="right-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;position:relative;">
         
         <!-- Lemon Image -->
-        <div class="image-container" style="width:100%;height:100%;display:flex;align-items:flex-start;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
+        <div class="image-container" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:flex-start;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
           <img 
             src="img/3d-pixel-lemon-candy-pack.png"
             alt="3D Lemon Candy Pack"
-            style="width:100%;height:650px;object-fit:cover;display:block;">
+            style="width:100%;height:650px;object-fit:cover;display:block;margin-bottom:1.5rem;">
+          
+          <!-- Project Details debajo de la imagen -->
+          <div style="display:flex;gap:2rem;flex-wrap:wrap;width:100%;opacity:0;animation:fadeInUp 1s ease-out 0.7s forwards;">
+            <div style="flex:0 1 auto;border-left:3px solid #1a3d5c;padding-left:1rem;">
+              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Role</h4>
+              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">3D Designer · Product Visualization</p>
+            </div>
+            <div style="flex:0 1 auto;border-left:3px solid #4a7bb8;padding-left:1rem;">
+              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Product</h4>
+              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">Lemon Candy Pack</p>
+            </div>
+            <div style="flex:0 1 auto;border-left:3px solid #6ba3e3;padding-left:1rem;">
+              <h4 style="color:#1a3d5c;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Software</h4>
+              <p style="color:#4a7bb8;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">Cinema 4D · Octane Render</p>
+            </div>
+          </div>
         </div>
         
       </div>

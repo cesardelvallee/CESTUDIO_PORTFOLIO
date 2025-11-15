@@ -233,49 +233,38 @@
         <!-- Elemento visual separador -->
         <div style="width:80px;height:2px;background:linear-gradient(90deg, #2a1f15 0%, transparent 100%);margin:0 0 3rem 0;opacity:0;animation:fadeInUp 0.8s ease-out 0.8s forwards;"></div>
 
-        <!-- Project Details - Con scroll reveal -->
-        <div class="scroll-reveal" style="margin-bottom:2rem;">
-          
-          <!-- Lista vertical simple -->
-          <div>
-            
-            <!-- Role -->
-            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #2a1f15; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Role</h4>
-              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">3D Artist · Cinema 4D Specialist · Creative Direction</p>
-            </div>
-            
-            <!-- Product -->
-            <div class="scroll-item" style="margin-bottom:2rem; border-left:3px solid #4a3828; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Product</h4>
-              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Loewe 001 Perfume · Luxury Fragrance</p>
-            </div>
-            
-            <!-- Software -->
-            <div class="scroll-item" style="border-left:3px solid #6b5d47; padding-left:1.5rem; opacity:0; transform:translateY(30px);">
-              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:clamp(0.75rem,1vw,0.85rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem 0;">Software</h4>
-              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.4;margin:0;font-weight:300;">Cinema 4D R25 · After Effects · Premiere Pro</p>
-            </div>
-            
-          </div>
-        </div>
-
       </div>
 
       <!-- Right Column - Video -->
       <div class="right-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;position:relative;">
         
         <!-- LOEWE Video -->
-        <div class="video-container" style="width:100%;height:100%;display:flex;align-items:flex-start;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
+        <div class="video-container" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:flex-start;opacity:0;animation:fadeInUp 1s ease-out 0.5s forwards;">
           <video 
             autoplay 
             loop 
             muted 
             playsinline
-            style="width:100%;height:650px;object-fit:cover;display:block;background:transparent;">
+            style="width:100%;height:650px;object-fit:cover;display:block;background:transparent;margin-bottom:1.5rem;">
             <source src="video/LOEWE_GIF.webm" type="video/webm">
             Tu navegador no soporta el elemento video.
           </video>
+          
+          <!-- Project Details debajo del video -->
+          <div style="display:flex;gap:2rem;flex-wrap:wrap;width:100%;opacity:0;animation:fadeInUp 1s ease-out 0.7s forwards;">
+            <div style="flex:0 1 auto;border-left:3px solid #2a1f15;padding-left:1rem;">
+              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Role</h4>
+              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">3D Artist · Cinema 4D Specialist</p>
+            </div>
+            <div style="flex:0 1 auto;border-left:3px solid #4a3828;padding-left:1rem;">
+              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Product</h4>
+              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">Loewe 001 Perfume</p>
+            </div>
+            <div style="flex:0 1 auto;border-left:3px solid #6b5d47;padding-left:1rem;">
+              <h4 style="color:#2a1f15;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem 0;">Software</h4>
+              <p style="color:#4a3828;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.3;margin:0;font-weight:300;">Cinema 4D · After Effects</p>
+            </div>
+          </div>
         </div>
         
       </div>
