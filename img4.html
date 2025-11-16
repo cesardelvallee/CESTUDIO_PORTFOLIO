@@ -215,14 +215,119 @@
     
   </div>
   
-  <!-- Sección de parallax del video -->
-  <section id="video-section" style="min-height:500vh;background:#a8d4c8;padding-bottom:4rem;">
-    <div class="video__content">
-      <figure class="video-figure">
-        <video id="kaleo-video" src="video/2283-1-1-Del_Valle_Fuentes_Cesar_95de8d15-a66d-4ec7-48afe0a13b33.mp4" loop muted playsinline></video>
-      </figure>
+  <!-- Galería épica con animaciones reversibles -->
+  <section style="background:#a8d4c8;padding:8rem 5vw 0 5vw;overflow:hidden;">
+    <div style="max-width:1100px;margin:0 auto;">
+      
+      <!-- Grid 2x2 para mejor distribución -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem 8rem;align-items:start;">
+        
+        <!-- Imagen 1: Aparece desde la derecha con rotación -->
+        <div class="epic-img-1" style="opacity:0;transform:translateX(400px) rotate(45deg) scale(0.3);filter:blur(20px);height:400px;display:flex;align-items:center;justify-content:center;">
+          <img src="img/RASTRILLO_SHOOTS.jpg" alt="Rastrillo Shoots" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25);display:block;">
+        </div>
+        
+        <!-- Imagen 2: Aparece desde la izquierda girando -->
+        <div class="epic-img-2" style="opacity:0;transform:translateX(-400px) rotate(-45deg) scale(0.3);filter:blur(20px);height:400px;display:flex;align-items:center;justify-content:center;">
+          <img src="img/2411_RASTRILLO_MOODBAORD.png" alt="Rastrillo Moodboard" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25);display:block;">
+        </div>
+        
+        <!-- Imagen 3: Aparece desde abajo con zoom -->
+        <div class="epic-img-3" style="opacity:0;transform:translateY(300px) scale(0.2);filter:blur(30px);height:400px;display:flex;align-items:center;justify-content:center;">
+          <img src="img/2411_RASTRILLO_MOODBAORD_2.2.png" alt="Rastrillo Moodboard 2" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25);display:block;">
+        </div>
+        
+        <!-- Imagen 4: Aparece con flip 3D -->
+        <div class="epic-img-4" style="opacity:0;transform:rotateY(180deg) scale(0.3);perspective:1000px;filter:blur(20px);height:400px;display:flex;align-items:center;justify-content:center;">
+          <img src="img/BOARDCAMPAÑaELRASTRILLO.jpg" alt="Board Campaña" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25);display:block;">
+        </div>
+        
+      </div>
+      
+      <!-- Espacio inferior -->
+      <div style="height:4rem;"></div>
+      
     </div>
   </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Configuración de animaciones reversibles con ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Imagen 1: desde derecha con rotación EXTREMA
+      const img1 = document.querySelector('.epic-img-1');
+      gsap.to(img1, {
+        scrollTrigger: {
+          trigger: img1,
+          start: 'top 90%',
+          end: 'top 10%',
+          scrub: 2.5,
+          toggleActions: 'play reverse play reverse'
+        },
+        opacity: 1,
+        x: 0,
+        rotation: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        ease: 'power4.out'
+      });
+      
+      // Imagen 2: desde izquierda girando EXTREMA
+      const img2 = document.querySelector('.epic-img-2');
+      gsap.to(img2, {
+        scrollTrigger: {
+          trigger: img2,
+          start: 'top 90%',
+          end: 'top 10%',
+          scrub: 2.5,
+          toggleActions: 'play reverse play reverse'
+        },
+        opacity: 1,
+        x: 0,
+        rotation: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        ease: 'power4.out'
+      });
+      
+      // Imagen 3: desde abajo con zoom EXPLOSIVO
+      const img3 = document.querySelector('.epic-img-3');
+      gsap.to(img3, {
+        scrollTrigger: {
+          trigger: img3,
+          start: 'top 90%',
+          end: 'top 10%',
+          scrub: 2.5,
+          toggleActions: 'play reverse play reverse'
+        },
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        ease: 'back.out(2.5)'
+      });
+      
+      // Imagen 4: flip 3D COMPLETO
+      const img4 = document.querySelector('.epic-img-4');
+      gsap.to(img4, {
+        scrollTrigger: {
+          trigger: img4,
+          start: 'top 90%',
+          end: 'top 10%',
+          scrub: 2.5,
+          toggleActions: 'play reverse play reverse'
+        },
+        opacity: 1,
+        rotateY: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        ease: 'power4.out'
+      });
+      
+    });
+  </script>
 
   <!-- Pie de página -->
   <footer style="position: relative; background: linear-gradient(135deg, #1a1e1f 0%, #25292b 50%, #1a1e1f 100%); overflow: hidden; padding: 0;">
