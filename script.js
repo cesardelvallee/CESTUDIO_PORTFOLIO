@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isGrabbing) {
         eggCursor.style.backgroundImage = "url('img/GRAB.svg')";
       } else {
-        const selectable = e.target.closest('.img-drag, a, button, input, textarea, .top-bar-left, .hero-btn, .bg-changer-btn, .control-btn, .player-toggle, .player-minimize, .progress-bar, .genre-dropdown, .volume-slider, .contact-link, .contact-card, .cta-button, .card-link');
+        const selectable = e.target.closest('.img-drag, a, button, input, textarea, .top-bar-left, .hero-btn, .bg-changer-btn, .control-btn, .player-toggle, .player-minimize, .progress-bar, .genre-dropdown, .volume-slider, .contact-link, .contact-card, .cta-button, .card-link, .minimal-card img');
         eggCursor.style.backgroundImage = selectable ? "url('img/HOVER.svg')" : "url('img/DEFAULT.svg')";
       }
     }
@@ -371,3 +371,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function addHoverEffects() { const skillBlocks = document.querySelectorAll('.skill-block'); skillBlocks.forEach(block => { block.addEventListener('mouseenter', () => { block.style.transform = 'translateY(-4px)'; block.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; }); block.addEventListener('mouseleave', () => { block.style.transform = 'translateY(0)'; }); }); }
   setTimeout(() => { elegantAnimations(); addHoverEffects(); }, 100);
 });
+
+// Control de audio por scroll para el video de Loewe spot
+  setTimeout(() => {
+    const loeweVideo = document.getElementById('kaleo-video');
+    let audioActivated = false;
+    let lastScrollY = window.scrollY;
+    if (loeweVideo) {
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        // Si bajamos y no está activado el audio
+        if (currentScrollY > lastScrollY && !audioActivated) {
+          loeweVideo.muted = false;
+          audioActivated = true;
+        }
+        // Si subimos y el audio está activado
+        if (currentScrollY < lastScrollY && audioActivated) {
+          loeweVideo.muted = true;
+          audioActivated = false;
+        }
+        lastScrollY = currentScrollY;
+      });
+    }
+  }, 500);

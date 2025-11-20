@@ -395,6 +395,10 @@ body.about-page .hero-subtitle {
   line-height: 1.5;
 }
 
+.skill-item span {
+  white-space: nowrap;
+}
+
 /* Info Section - Elegant */
 .info-elegant {
   width: 100%;
@@ -1715,3 +1719,47 @@ img {
   color: rgba(255, 255, 255, 0.95);
   text-shadow: none;
 }
+.circle-progress {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.circle-progress svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+.circle-progress-inner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circle-logo-center {
+  position: absolute;
+  top: 0; left: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.circle-logo-center img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: none;
+}
+.circle-progress .progress {
+  transition: none;
+}
+/* Elimino reglas que fuerzan el trazo completo o el color blanco en los círculos */
