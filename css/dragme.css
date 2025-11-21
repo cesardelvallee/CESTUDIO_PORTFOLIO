@@ -1,12 +1,10 @@
 body {
   cursor: url('https://pngimg.com/uploads/fried_egg/fried_egg_PNG41.png') 16 16, pointer;
 }
-/* Mickey Mouse hand cursor SVG as data URI */
 .img-drag {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2c2 0 3 2 3 4v6h2c2 0 3 2 3 4v6c0 2-1 4-3 4h-2v2c0 2-1 4-3 4s-3-2-3-4v-2h-2c-2 0-3-2-3-4v-6c0-2 1-4 3-4h2V6c0-2 1-4 3-4z" fill="white" stroke="black" stroke-width="2"/><circle cx="20" cy="8" r="2" fill="black"/><circle cx="12" cy="8" r="2" fill="black"/><ellipse cx="16" cy="28" rx="4" ry="2" fill="black"/></svg>') 16 16, pointer;
 }
 
-/* Bocadillo DRAG ME */
 
 
 .img-drag-bubble {

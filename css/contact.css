@@ -1,4 +1,3 @@
-/* ===== CONTACT PAGE STYLES ===== */
 
 .contact-page {
   min-height: 100vh;
@@ -24,7 +23,6 @@
   margin: 0 auto;
 }
 
-/* ===== HEADER ===== */
 .contact-header {
   text-align: center;
   margin-bottom: 20px;
@@ -58,7 +56,6 @@
   letter-spacing: 0.01em;
 }
 
-/* ===== CONTACT GRID ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -166,7 +163,6 @@
   border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ===== CARD SPECIFIC COLORS ===== */
 .email-card:hover {
   border-color: rgba(74, 144, 226, 0.4);
 }
@@ -199,7 +195,6 @@
   background: rgba(251, 146, 60, 0.2);
 }
 
-/* ===== CALL TO ACTION ===== */
 .contact-cta {
   text-align: center;
   background: rgba(255, 255, 255, 0.05);
@@ -270,7 +265,6 @@
   background: linear-gradient(135deg, #ff7979, #55efc4);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .contact-grid {
     max-width: 500px;
@@ -336,7 +330,6 @@
   }
 }
 
-/* ===== ANIMACIONES DE ENTRADA ===== */
 .contact-card {
   animation: fadeInUp 0.8s ease-out;
   animation-fill-mode: both;

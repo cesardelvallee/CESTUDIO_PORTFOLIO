@@ -10,19 +10,16 @@
 </head>
 <body class="about-page">
   
-  <!-- Standard Top Bar (unified with index) -->
   <div class="top-bar">
     <div class="top-bar-left nav-link">CESAR DEL VALLE</div>
-    <div class="top-bar-center"><!-- center intentionally left empty on About page --></div>
+    <div class="top-bar-center"></div>
     <div class="top-bar-right">
       <a href="contact.html" class="contact-link nav-link">CONTACT ME</a>
     </div>
   </div>
 
-  <!-- Main Container -->
   <main class="about-container">
     
-    <!-- Hero Section -->
     <section class="about-hero-elegant">
       <div class="hero-content-elegant">
         <div class="hero-text-block">
@@ -53,7 +50,6 @@
         </div>
       </div>
     </section>
-    <!-- Technical Skills Section -->
     <section class="technical-skills-elegant" style="max-width:1100px;margin:0 auto 4.5rem auto;padding:0 2vw;">
       <div class="section-header">
         <h3 class="section-title-elegant">Technical Skills</h3>
@@ -61,7 +57,6 @@
       </div>
       <div class="skills-row" style="display:flex;justify-content:center;align-items:flex-end;gap:3vw;margin-top:0.5rem;">
       <div class="skills-row" style="display:flex;justify-content:center;align-items:flex-end;gap:3vw;margin-top:0.5rem;">
-        <!-- Nuevo diseño: círculos de progreso animados y originales -->
         <div class="skill-item" style="display:flex;flex-direction:column;align-items:center;gap:0.7rem;">
           <div class="circle-progress" data-value="90" style="--color1:#31A8FF;--color2:#4ecdc4;">
             <div class="circle-progress-inner">
@@ -199,7 +194,6 @@
           document.querySelectorAll('.circle-progress').forEach(function(el){
             var value = parseInt(el.getAttribute('data-value'),10);
             var percent = Math.max(0, Math.min(100, value));
-            // Buscar el círculo .progress dentro de cualquier SVG hijo
             var circle = el.querySelector('.progress');
             if (circle) {
               var r = circle.getAttribute('r');
@@ -214,7 +208,6 @@
       </script>
     </section>
 
-    <!-- Skills Section -->
     <section class="skills-elegant">
       <div class="section-header">
         <h3 class="section-title-elegant">Expertise</h3>
@@ -256,7 +249,6 @@
       </div>
     </section>
 
-    <!-- Info Section -->
     <section class="info-elegant">
       <div class="info-grid-elegant">
         <div class="info-column">
@@ -283,7 +275,6 @@
 
   </main>
 
-  <!-- Custom Cursor -->
   <div id="egg-cursor"></div>
   
   <script src="script.js"></script>
